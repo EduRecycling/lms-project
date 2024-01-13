@@ -8,8 +8,8 @@ type user = {
     country: string;
   };
   active: boolean;
-  courses: course[] | null;
-  certificates: certificate[] | null;
+  courses: course[] | [];
+  certificates: certificate[] | [];
 };
 
 type course = {
@@ -22,6 +22,7 @@ type course = {
 type certificate = {
   id: string;
   courseId: string;
+  uid: string;
 };
 type feedback = {
   id: string;
