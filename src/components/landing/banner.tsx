@@ -2,7 +2,7 @@ import { Bend } from "./style";
 
 const Banner = () => {
   return (
-    <div className="Banner h-full w-full text-white bg-[#082100] flex justify-center px-10">
+    <div className="Banner h-full w-full min-h-[200px] text-white bg-[#082100] flex justify-center px-10 overflow-hidden">
       <Bend className="inner reverse flex gap-2 items-center justify-center w-[1280px]">
         <div className="info flex gap-2 flex-col w-full">
           <h1 className="main-heading text-4xl font-bold">
@@ -16,7 +16,7 @@ const Banner = () => {
             Get Started Now!
           </button>
         </div>
-        <div className="diagram w-[90%]">
+        <div className="diagram w-[90%] overflow-hidden">
           <img src="/images/banner-img.png" alt="..." className="w-full" />
         </div>
       </Bend>

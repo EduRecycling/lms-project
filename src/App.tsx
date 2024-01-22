@@ -1,9 +1,9 @@
-import Auth from "./pages/auth";
+import PageRoute from "./route";
 
 export default function App() {
   return (
     <section>
-      <Auth />
+      <PageRoute />
     </section>
   );
 }
