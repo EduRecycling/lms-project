@@ -23,11 +23,11 @@ export default function Auth() {
   const handleAuthControl = (actionType: string) => {
     setControlAuth((prevControlAuth: control | any) => {
       if (actionType === "login") {
-        return { login: true, signUp: false, recover: false };
+        return { login: true, SignUp: false, recover: false };
       } else if (actionType === "signup") {
-        return { login: false, signUp: true, recover: false };
+        return { login: false, SignUp: true, recover: false };
       } else if (actionType === "recover") {
-        return { login: false, signUp: false, recover: true };
+        return { login: false, SignUp: false, recover: true };
       }
       // Default: If none of the above action types match, return the previous state
       return prevControlAuth;
