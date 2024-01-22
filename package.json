@@ -16,14 +16,18 @@
     "@tensorflow/tfjs-backend-webgl": "^4.16.0",
     "@tensorflow/tfjs-converter": "^4.16.0",
     "@tensorflow/tfjs-core": "^4.16.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
     "fingerpose": "^0.1.0",
     "firebase": "^10.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-simple-star-rating": "^5.1.7",
     "react-webcam": "^7.2.0",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
+    "@types/body-scroll-lock": "^3.1.2",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
