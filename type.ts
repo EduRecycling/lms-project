@@ -1,4 +1,4 @@
-type user = {
+export type user = {
   userInfo: {
     uid: string;
     displayname: string;
@@ -12,19 +12,19 @@ type user = {
   certificates: certificate[] | [];
 };
 
-type course = {
+export type course = {
   id: string;
   name: string;
   type: "kids" | "community" | "goverment" | "other courses";
   source: string;
   sourceType: "blog" | "video" | string;
 };
-type certificate = {
+export type certificate = {
   id: string;
   courseId: string;
   uid: string;
 };
-type feedback = {
+export type feedback = {
   id: string;
   email: string;
   fullname: string;
