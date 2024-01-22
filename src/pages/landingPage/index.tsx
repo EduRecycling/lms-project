@@ -1,10 +1,23 @@
-import Footer from "../../components/footer";
-import Partner from "../../components/partners";
+import {
+  Courses,
+  Testimonial,
+  Banner,
+  Offering,
+  Reason,
+  Partners,
+  Footer,
+  Navbar,
+} from "../../components/landing";
 
 export default function LandingPage() {
   return (
     <section className={`p-[5%] w-full`}>
-      <Partner />
+      <Navbar />
+      <Banner />
+      <Offering />
+      <Courses />
+      <Partners />
+      <Testimonial />
       <Footer />
     </section>
   );

@@ -1,11 +1,11 @@
 import logo from "../../assets/logo.jpg";
 import { IoMdArrowBack } from "react-icons/io";
-import Footer from "../../components/footer";
 import ExternalAuth from "./ExternalAuth";
 import SignUp from "./SignUp";
 import { useState } from "react";
 import LogIn from "./LogIn";
 import ResetPwd from "./ResetPwd";
+import { Footer } from "../../components/landing";
 
 type control = {
   login: boolean;
