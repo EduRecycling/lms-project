@@ -1,9 +1,9 @@
-import LandingPage from "./pages/landingPage";
+import Auth from "./pages/auth";
 
 export default function App() {
   return (
     <section>
-      <LandingPage />
+      <Auth />
     </section>
   );
 }
