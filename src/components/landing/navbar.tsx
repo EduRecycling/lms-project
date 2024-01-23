@@ -36,7 +36,7 @@ const Navbar = () => {
             <Link to="/Login">Login</Link>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <button className="get-started bg-[#98D685] text-white p-2 px-3 rounded hover:transition hover:bg-[#082100]">
+            <button className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30">
               Get Started
             </button>
           </li>

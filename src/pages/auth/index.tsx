@@ -1,11 +1,12 @@
-import logo from "../../assets/logo.jpg";
 import { IoMdArrowBack } from "react-icons/io";
-import Footer from "../../components/footer";
+
 import ExternalAuth from "./ExternalAuth";
 import SignUp from "./SignUp";
 import { useState } from "react";
 import LogIn from "./LogIn";
 import ResetPwd from "./ResetPwd";
+import { useNavigate } from "react-router";
+import { Footer } from "../../components/landing";
 
 type control = {
   login: boolean;
@@ -21,6 +22,7 @@ export default function Auth() {
   });
 
   const handleAuthControl = (actionType: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setControlAuth((prevControlAuth: control | any) => {
       if (actionType === "login") {
         return { login: true, SignUp: false, recover: false };
@@ -34,16 +36,32 @@ export default function Auth() {
     });
   };
 
+  const navigate = useNavigate();
+
   return (
     <section className="px-[5%] py-[2%] h-full bg-background">
-      <IoMdArrowBack className=" text-3xl my-3" />
-      <img src={logo} alt={"logo"} width={100} height={100} />
+      <button
+        onClick={() => {
+          navigate(-1);
+        }}
+      >
+        <IoMdArrowBack className=" text-3xl my-3" />
+      </button>
+      <img
+        src="/images/logo1.png"
+        alt={"logo"}
+        width={100}
+        height={100}
+        onClick={() => {
+          navigate("/");
+        }}
+      />
       <div className="flex items-center bg-auth bg-no-repeat   bg-cover bg-center  p-[5%] lg:p-0 lg:[background-image:none] ">
         <div className="lg:basis-1/2 flex-1 w-full h-full bg-[rgba(225,225,225,0.9)] lg:bg-white p-[5%]">
           {!controlAuth.recover && (
             <div className=" flex justify-evenly mb-6">
               <p
-                className={`text-black font-[roboto] lg:text-3xl text-xl  p-3 ${
+                className={`text-black font-[roboto] lg:text-3xl text-xl p-3 cursor-pointer ${
                   controlAuth.SignUp && "border-b-4 border-Primary_70"
                 }`}
                 onClick={() => handleAuthControl("signup")}
@@ -51,7 +69,7 @@ export default function Auth() {
                 Sign Up
               </p>
               <p
-                className={`text-black font-[roboto] lg:text-3xl text-xl  p-3 ${
+                className={`text-black font-[roboto] lg:text-3xl text-xl p-3 cursor-pointer ${
                   controlAuth.login && "border-b-4 border-Primary_70"
                 }`}
                 onClick={() => handleAuthControl("login")}
@@ -67,7 +85,7 @@ export default function Auth() {
               <>
                 <LogIn />
                 <p
-                  className="p-3 text-right text-base font-medium"
+                  className="p-3 text-right text-base font-medium cursor-pointer"
                   onClick={() => handleAuthControl("recover")}
                 >
                   Recover Password
