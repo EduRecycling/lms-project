@@ -9,8 +9,10 @@ export default function Partner() {
       <p className=" text-4xl font-[roboto] text-Primary_10">
         In Partnership <br /> with;
       </p>
-      <img src={googleDev} alt="google Developer" />
-      <img src={sdg} alt="Sustainable development goals" />
+      <div className="flex gap-2 flex-wrap">
+        <img src={googleDev} alt="google Developer" />
+        <img src={sdg} alt="Sustainable development goals" />
+      </div>
     </div>
   );
 }

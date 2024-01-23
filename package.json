@@ -16,6 +16,7 @@
     "@tensorflow/tfjs-backend-webgl": "^4.16.0",
     "@tensorflow/tfjs-converter": "^4.16.0",
     "@tensorflow/tfjs-core": "^4.16.0",
+    "animate.css": "^4.1.1",
     "body-scroll-lock": "^4.0.0-beta.0",
     "fingerpose": "^0.1.0",
     "firebase": "^10.7.1",
@@ -25,7 +26,8 @@
     "react-router-dom": "^6.21.3",
     "react-simple-star-rating": "^5.1.7",
     "react-webcam": "^7.2.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "wow.js": "^1.2.2"
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^3.1.2",
