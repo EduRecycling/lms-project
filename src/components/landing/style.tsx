@@ -84,19 +84,19 @@ export const Bend = styled.div`
 export const Heading = {
   h1: styled.span`
     & {
-      font-size: 100px;
+      font-size: calc(32px + 1.25vmin);
     }
   `,
 
   h2: styled.span`
     & {
-      font-size: calc(20px + 1.25vmin);
+      font-size: calc(24px + 2.05vmin);
     }
   `,
 
   h3: styled.span`
     & {
-      font-size: 60px;
+      font-size: calc(20px + 1.25vmin);
     }
   `,
 
