@@ -34,7 +34,7 @@ green economy`,
 
 const Offering = () => {
   return (
-    <div className="Offering flex flex-col items-center gap-1 p-10">
+    <div className="Offering flex flex-col items-center gap-1 p-[5%]">
       <div className="inner">
         <Heading.h2 className="font-semibold">Our Offerings</Heading.h2>
       </div>
@@ -51,7 +51,7 @@ const Offering = () => {
 
 const Offer = ({ offer }: { offer: OfferType }) => {
   return (
-    <div className="offer-modal min-w-[280px] w-[360px] bg-[#fff] rounded-lg p-4 flex flex-col gap-2 shadow-lg">
+    <div className="offer-modal min-w-[280px] w-[360px] bg-[#fff] rounded-lg p-4 flex flex-col gap-2 shadow-lg animate__animated animate__fadeInUp wow">
       <div className="img-box w-full h-[200px] min-h-[220px] bg-[#ddd] rounded overflow-hidden">
         <img
           src={offer.image}
@@ -60,7 +60,7 @@ const Offer = ({ offer }: { offer: OfferType }) => {
         />
       </div>
       <div className="description">
-        <Heading.h5 className="title font-semibold">{offer.title}</Heading.h5>
+        <Heading.h4 className="title font-semibold">{offer.title}</Heading.h4>
         <p className="description">{offer.description}</p>
       </div>
     </div>

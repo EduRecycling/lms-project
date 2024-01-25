@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { Iconic } from "./style";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,26 +17,26 @@ const Navbar = () => {
   });
 
   return (
-    <Nav className="Navbar flex justify-between p-3 px-10 items-center">
+    <Nav className="Navbar shadow-md fixed w-full bg-primary-100 flex justify-between p-1 px-10 items-center">
       <Iconic className="logo i72">
         <img src={logo} alt="..." />
       </Iconic>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <a href="/About">About Us</a>
+            <Link to="/About">About Us</Link>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <a href="/Courses">Courses</a>
+            <Link to="/Courses">Courses</Link>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <a href="/Help">Need Help?</a>
+            <Link to="/Help">Need Help?</Link>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <a href="/Login">Login</a>
+            <Link to="/Login">Login</Link>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <button className="get-started bg-[#98D685] text-white p-2 px-3 rounded hover:transition hover:bg-[#082100]">
+            <button className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30">
               Get Started
             </button>
           </li>
@@ -54,6 +55,10 @@ const Navbar = () => {
 };
 
 const Nav = styled.div`
+  & {
+    z-index: 1000;
+  }
+
   @media (min-width: 721px) {
     & .menu-btn {
       display: none;
@@ -63,12 +68,14 @@ const Nav = styled.div`
   @media (max-width: 720px) {
     & .nav-links {
       position: absolute;
-      background-color: #f6fdf3e1;
-      top: 95px;
+      background-color: #fbfcfaf1;
+      top: 80px;
       left: 0;
       right: 0;
       bottom: 0;
-      height: 100%;
+      overflow-y: auto;
+      height: calc(100svh - 80px);
+      min-height: 100%;
       width: 100%;
 
       padding: 40px 20px;
