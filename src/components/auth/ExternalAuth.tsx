@@ -1,4 +1,3 @@
-import google from "../../assets/google.png";
 import { FaSquareFacebook } from "react-icons/fa6";
 
 export default function ExternalAuth() {

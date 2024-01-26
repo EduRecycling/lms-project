@@ -1,17 +1,13 @@
-import { FaChevronDown } from "react-icons/fa6";
-import { Bend, Shorthen } from "../landing/style";
-import { useState } from "react";
+import { Bend } from "../landing/style";
 
 const Reason = () => {
-  const [more, setMore] = useState(false);
   return (
     <div className="Reason w-full p-[5.5%]">
       <div className="joint flex gap-3 flex-col max-w-[1200px] m-auto">
         <Bend className="inner flex justify-center gap-5 items-center m-0 p-0 m840 flex-row-reverse">
           <div
-            className={`why bg-primary-50 text-[#fff] animate__animated animate__slideInLeft wow rounded-3xl p-10 text-lg basis-[55%] m-0 max-h-[320px] max-w-[540px] relative ${
-              more && "full"
-            }`}
+            className={`why bg-primary-50 text-[#fff] animate__animated animate__slideInLeft wow rounded-3xl p-10 text-lg basis-[55%] m-0 max-h-[320px] max-w-[540px] relative full
+            `}
           >
             <p>
               We are a team of tech enthusiasts, eager to solve problems within
