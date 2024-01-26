@@ -1,7 +1,6 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FaBars, FaX } from "react-icons/fa6";
-import logo from "../../assets/logo.png";
-import { Iconic } from "./style";
+import { Iconic } from "../landing/style";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -19,7 +18,7 @@ const Navbar = () => {
   return (
     <Nav className="Navbar shadow-md fixed w-full bg-primary-100 flex justify-between p-1 px-10 items-center">
       <Iconic className="logo i72">
-        <img src={logo} alt="..." />
+        <img src="/images/logo1.png" alt="..." />
       </Iconic>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
