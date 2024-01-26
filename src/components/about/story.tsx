@@ -39,7 +39,7 @@ const OurStory = () => {
             </p>
             {!more && (
               <button
-                className="more absolute bottom-[10px] bg-secondary-30 p-4 rounded-full left-[50%] translate-x-[-50%]"
+                className="more absolute bottom-[10px] bg-neutral-colour-96 p-4 rounded-full left-[50%] translate-x-[-50%]"
                 onClick={() => {
                   setMore(!more);
                 }}
