@@ -9,7 +9,7 @@ export default {
       },
     },
     backgroundImage: {
-      auth: "url('./src/assets/authPicture.png')",
+      auth: "url('./public/images/auth/authPicture.png')",
     },
     colors: {
       Primary_30: "#005600",
@@ -40,6 +40,8 @@ export default {
       "secondary-80": "#c6c6c6",
       "secondary-90": "#e2e3e3",
       "secondary-100": "#ffffff",
+      "neutral-colour-96": "#F3F4F0",
+      "Neutral-colour": "#171E00",
     },
   },
   plugins: [],
