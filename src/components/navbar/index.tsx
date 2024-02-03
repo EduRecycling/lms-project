@@ -1,9 +1,9 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FaBars, FaX } from "react-icons/fa6";
 import { Iconic } from "../landing/style";
-import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Nav } from "../style";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +17,11 @@ const Navbar = () => {
 
   return (
     <Nav className="Navbar shadow-md fixed w-full bg-primary-100 flex justify-between p-1 px-10 items-center">
-      <Iconic className="logo i72">
-        <img src="/images/logo1.png" alt="..." />
-      </Iconic>
+      <Link to="/">
+        <Iconic className="logo i72">
+          <img src="/images/logo1.png" alt="..." />
+        </Iconic>
+      </Link>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
@@ -52,50 +54,4 @@ const Navbar = () => {
     </Nav>
   );
 };
-
-const Nav = styled.div`
-  & {
-    z-index: 1000;
-  }
-
-  @media (min-width: 721px) {
-    & .menu-btn {
-      display: none;
-    }
-  }
-
-  @media (max-width: 720px) {
-    & .nav-links {
-      position: absolute;
-      background-color: #fbfcfaf1;
-      top: 80px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow-y: auto;
-      height: calc(100svh - 80px);
-      min-height: 100%;
-      width: 100%;
-
-      padding: 40px 20px;
-
-      visibility: hidden;
-      opacity: 0;
-      z-index: -1000;
-    }
-
-    & .nav-links.show-links {
-      transition: 0.3s ease-in opacity visibility z-index;
-      visibility: visible;
-      opacity: 1;
-
-      z-index: 1000;
-    }
-
-    & .nav-links ul {
-      flex-direction: column;
-    }
-  }
-`;
-
 export default Navbar;

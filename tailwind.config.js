@@ -9,7 +9,7 @@ export default {
       },
     },
     backgroundImage: {
-      auth: "url('./public/images/auth/authPicture.png')",
+      auth: "url('./images/auth/authPicture.png')",
     },
     colors: {
       Primary_30: "#005600",
