@@ -1,46 +1,40 @@
-import * as React from "react";
-import GetLocalData from "../functions/getData";
-import { editSettings } from "../db/loadLocalStorage";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ThemeContextType, ThemeModeType } from "../@types/theme";
-import { BoxProps } from "@mui/material";
-import AppInfo from "../db/app_info";
+import * as React from "react";
+import { createSettings, editSettings } from "../data/LocalStorage";
+
+type PropsType = {
+  children: any;
+};
+
+export type ThemeContextType = {
+  theme: string;
+  toggleTheme: (code: string | number) => void;
+};
 
 export const ThemeContext = React.createContext<ThemeContextType | null>(null);
 
-const storage = AppInfo.storage.value;
+const db_theme_key = "theme";
 
-const upadateTheme = (newThemeCode: number) => {
-  const currentStorageData = GetLocalData(storage);
-  currentStorageData._theme = newThemeCode;
-  editSettings(storage, currentStorageData);
-};
-
-const ThemeContextProvider = ({ children }: BoxProps) => {
-  const [isLightTheme, setIsLightTheme] = React.useState(
-    GetLocalData(storage)._theme === 111 ? true : false
-  );
-
-  const mode: ThemeModeType = {
-    light: {
-      mode: "light",
-    },
-
-    dark: {
-      mode: "dark",
-    },
+// const ThemeContextProvider = ({ children }: BoxProps) => {
+export default class ThemeContextProvider extends React.Component<PropsType> {
+  state = {
+    theme: document.documentElement.className,
   };
 
-  const toggleTheme = () => {
-    setIsLightTheme(!isLightTheme);
-    isLightTheme ? upadateTheme(222) : upadateTheme(111);
+  toggleTheme = (newThemeCode: any) => {
+    document.documentElement.className = newThemeCode;
+    this.setState({ theme: editSettings(db_theme_key, newThemeCode) });
   };
 
-  return (
-    <ThemeContext.Provider value={{ isLightTheme, ...mode, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export default ThemeContextProvider;
+  render(): any {
+    if (!localStorage.getItem("theme")) createSettings(db_theme_key, "light");
+    return (
+      <ThemeContext.Provider
+        value={{ ...this.state, toggleTheme: this.toggleTheme }}
+      >
+        {this.props.children}
+      </ThemeContext.Provider>
+    );
+  }
+}

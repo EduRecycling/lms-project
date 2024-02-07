@@ -9,10 +9,11 @@ import {
   FaCertificate,
   FaComment,
 } from "react-icons/fa6";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Nav } from "../style";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
 
 const Navbar = () => {
   const [more, setMore] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [veil, setVeil] = useState(false);
 
-  const theme = "s";
+  const { theme } = useContext(ThemeContext) as ThemeContextType;
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
@@ -51,19 +52,19 @@ const Navbar = () => {
         <div className={`nav-links ${isOpen && "show-links"} flex gap-10`}>
           <ul className={`main flex gap-[0.65rem] items-center`}>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <Link to="/student/dashboard" className="nav-link">
+              <NavLink to="/student/dashboard" className="nav-link">
                 Dashboard
-              </Link>
+              </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <Link to="/student/explore" className="nav-link">
+              <NavLink to="/student/explore" className="nav-link">
                 Explore Courses
-              </Link>
+              </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <Link to="/student/notes" className="nav-link">
+              <NavLink to="/student/notes" className="nav-link">
                 Notes
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className="profile">
@@ -121,7 +122,7 @@ const Navbar = () => {
                 >
                   <ul className="limo relative flex flex-col w-full gap-[0.35rem] p-2">
                     <li>
-                      <Link
+                      <NavLink
                         to="/student/profile"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
@@ -129,10 +130,10 @@ const Navbar = () => {
                           <CgProfile />
                         </span>
                         <span>View Profile</span>
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/student/feedback"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
@@ -140,10 +141,10 @@ const Navbar = () => {
                           <FaComment />
                         </span>
                         <span>Give Feedback</span>
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/student/certificate"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
@@ -151,10 +152,10 @@ const Navbar = () => {
                           <FaCertificate />
                         </span>
                         <span>Certificate</span>
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/logout"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
@@ -162,7 +163,7 @@ const Navbar = () => {
                           <AiOutlineLogout />
                         </span>
                         logout
-                      </Link>
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

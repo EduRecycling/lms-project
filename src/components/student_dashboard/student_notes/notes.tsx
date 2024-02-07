@@ -13,7 +13,7 @@ const Notes = () => {
         }}
       >
         {data.map((note) => {
-          return <Note />;
+          return <Note note={note} />;
         })}
         {data.length < 1 && (
           <div className="more flex flex-col items-center justify-center gap-2 mt-4 ta-c">

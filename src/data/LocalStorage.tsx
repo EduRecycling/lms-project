@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // theme
 // - 111 - light
 // - 222 - dark
@@ -10,13 +11,13 @@ function getSettings(itemName: string) {
   return JSON.parse(localStorage.getItem(itemName) || "local");
 }
 
-function createSettings(itemName: string, storageScheme: object) {
+function createSettings(itemName: string, storageScheme: any) {
   if (!itemName) console.error("No storage name!");
   localStorage.setItem(itemName, JSON.stringify(storageScheme));
   return storageScheme;
 }
 
-function editSettings(itemName: string, new_settings: object) {
+function editSettings(itemName: string, new_settings: any) {
   if (!itemName) console.error("No storage name!");
   localStorage.getItem(itemName)
     ? localStorage.setItem(itemName, JSON.stringify(new_settings))
