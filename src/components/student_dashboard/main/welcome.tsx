@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Heading } from "../../landing/style";
 
 const Welcome = () => {
-  const theme = "light";
+  const [theme, _] = useState("light");
+
+  // const theme = "light";
 
   return (
     <div className="welcome flex gap-4 flex-col">

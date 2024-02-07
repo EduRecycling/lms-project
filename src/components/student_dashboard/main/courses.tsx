@@ -39,7 +39,7 @@ const Courses = () => {
   );
 };
 
-const Course = () => {
+export const Course = () => {
   return (
     <div className="offer-modal min-w-[300px] max-w-[320px] m-auto bg-[#fff] rounded-lg p-4 flex flex-col gap-2 shadow-lg animate__animated animate__fadeInUp wow self-stretch">
       <div className="img-box w-full h-[200px] min-h-[220px] bg-[#ddd] rounded overflow-hidden">
