@@ -1,11 +1,13 @@
-import Main from "./main";
+import { ReactElement } from "react";
+import Footer from "../footer";
 import Navbar from "./navbar";
 
-const Dashboard = () => {
+const Dashboard = ({ children }: { children: ReactElement }) => {
   return (
     <div className="dashboard bg-background">
       <Navbar />
-      <Main />
+      <div className="inner p-28 px-10 min-h-[100svh]">{children}</div>
+      <Footer />
     </div>
   );
 };

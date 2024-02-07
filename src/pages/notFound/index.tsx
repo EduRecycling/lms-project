@@ -9,10 +9,10 @@ const NotFound = () => {
     <div className="nit h-svh bg-secondary-90 flex flex-col justify-between">
       <Navbar />
       <div className="notFound w-full flex justify-center items-center h-full">
-        <div className="inner flex flex-row-reverse items-center">
-          <div className="img-box w-80">
+        <div className="inner flex flex-col md:flex-row-reverse items-center">
+          {/* <div className="img-box w-80">
             <img src="/images/banner-img.png" alt="" />
-          </div>
+          </div> */}
           <div className="error-message flex flex-col gap-1">
             <Heading.h1 className="font-bold m-0">Page Not Found</Heading.h1>
             <Heading.h4>Seems you are lost</Heading.h4>
