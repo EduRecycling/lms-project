@@ -3,7 +3,7 @@ import { FaBars, FaX } from "react-icons/fa6";
 import { Iconic } from "../landing/style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Nav } from "../style";
+import { Nav } from "./style";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

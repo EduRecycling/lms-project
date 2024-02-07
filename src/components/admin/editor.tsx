@@ -18,11 +18,11 @@ interface AppProps {
 const Editor: React.FC<AppProps> = ({ handleModuleChange, moduleIndex }) => {
   const editorRef = useRef<EditorInstance | null>(null);
 
-  const log = () => {
-    if (editorRef.current) {
-      console.log(editorRef.current.getContent());
-    }
-  };
+  // const log = () => {
+  //   if (editorRef.current) {
+  //     console.log(editorRef.current.getContent());
+  //   }
+  // };
   const handleEditorChange = (content: string) => {
     // Update module's article content
     handleModuleChange(moduleIndex, "article", content);
@@ -31,10 +31,10 @@ const Editor: React.FC<AppProps> = ({ handleModuleChange, moduleIndex }) => {
     <>
       <TinyMCEEditor
         apiKey="omrp58s44cffyszc8fvt3412mqq2kqrgm19udvdolcby5a4i"
-        onEditorChange={(content, editor) => {
+        onEditorChange={(content) => {
           handleEditorChange(content);
         }}
-        onInit={(evt, editor) => (editorRef.current = editor)}
+        onInit={(_, editor) => (editorRef.current = editor)}
         initialValue="<p>This is the initial content of the editor.</p>"
         init={{
           height: 300,

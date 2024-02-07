@@ -60,9 +60,12 @@ const Vision = ({ vision }: { vision: visionType }) => {
         style={{ listStyleType: `${vision.info.length > 1 ? "disc" : "none"}` }}
         className="px-3"
       >
-        {vision.info.map((data) => {
+        {vision.info.map((data, index) => {
           return (
-            <li className=" text-Primary_10 text-[roboto] text-sm my-3">
+            <li
+              className=" text-Primary_10 text-[roboto] text-sm my-3"
+              key={index}
+            >
               {data}
             </li>
           );

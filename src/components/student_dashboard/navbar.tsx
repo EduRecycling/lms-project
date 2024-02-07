@@ -12,6 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { Nav } from "../style";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [more, setMore] = useState(false);
@@ -33,9 +34,7 @@ const Navbar = () => {
   return (
     <>
       <Nav
-        className={`Navbar ${
-          show ? "relative" : "fixed"
-        } w-full flex justify-between p-2 px-[4rem] items-center bg-background shadow-sm`}
+        className={`Navbar fixed w-full flex justify-between p-2 px-[4rem] items-center bg-[background] shadow-sm`}
       >
         <div className="logo">
           <Iconic className="logo i72">
@@ -51,66 +50,71 @@ const Navbar = () => {
           {!isOpen ? <FaBars /> : <FaX />}
         </button>
 
-        <div className={`nav-links ${isOpen && "show-links"}`}>
-          <ul className={`flex gap-[1rem] items-center`}>
+        <div className={`nav-links ${isOpen && "show-links"} flex gap-10`}>
+          <ul className={`main flex gap-[0.65rem] items-center`}>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <a href="#">Dashboard</a>
+              <Link to="/student/dashboard" className="nav-link">
+                Dashboard
+              </Link>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <a href="#">Explore Courses</a>
+              <Link to="/student/explore" className="nav-link">
+                Explore Courses
+              </Link>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <a href="#">Notes</a>
+              <Link to="/student/notes" className="nav-link">
+                Notes
+              </Link>
             </li>
           </ul>
-        </div>
+          <div className="profile">
+            <div
+              className={`screen-m ${show && "show"} ${
+                theme === "dark" && "dark"
+              } flex items-center gap-[1.38rem] self-stretch`}
+            >
+              <div className="user-profile relative">
+                <button
+                  onClick={() => {
+                    setMore(!more);
 
-        <div className="profile">
-          <div
-            className={`screen-m ${show && "show"} ${
-              theme === "dark" && "dark"
-            } flex items-center gap-[1.38rem] self-stretch`}
-          >
-            <div className="user-profile relative">
-              <button
-                onClick={() => {
-                  setMore(!more);
-
-                  setTimeout(() => {
-                    setMore(false);
-                  }, 5000);
-                }}
-                className="profile-btn p-[0.38rem] rounded-[2.375rem]"
-              >
-                <span className="dit flex items-center gap-[0.75rem]">
-                  <div className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden">
-                    <img
-                      src="/public/images/profile.png"
-                      className="w-full h-full object-cover"
-                      alt="..."
-                    />
-                  </div>
-                  <div className="p flex gap-[0.8rem] items-center">
-                    <div
-                      className="b flex flex-col justify-end items-end"
-                      style={{
-                        lineHeight: "1.25rem",
-                      }}
-                    >
-                      <h4 className="name font-semibold">Justin Bergson</h4>
-                      <p>Justin@gmail.com</p>
+                    setTimeout(() => {
+                      setMore(false);
+                    }, 10000);
+                  }}
+                  className="profile-btn p-[0.38rem] rounded-[2.375rem]"
+                >
+                  <span className="dit flex items-center gap-[0.75rem]">
+                    <div className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden">
+                      <img
+                        src="/public/images/profile.png"
+                        className="w-full h-full object-cover"
+                        alt="..."
+                      />
                     </div>
-                    <div className="ic">
-                      <div className="down-btn w-[1.45rem] h-[1.45rem] grid place-content- place-items-center rounded-full">
-                        {more ? <FaChevronUp /> : <FaChevronDown />}
+                    <div className="p flex gap-[0.8rem] items-center">
+                      <div
+                        className="b flex flex-col justify-end items-end"
+                        style={{
+                          lineHeight: "1.25rem",
+                        }}
+                      >
+                        <h4 className="name font-semibold">Justin Bergson</h4>
+                        <p>Justin@gmail.com</p>
+                      </div>
+                      <div className="ic">
+                        <div className="down-btn w-[1.45rem] h-[1.45rem] grid place-content- place-items-center rounded-full">
+                          {more ? <FaChevronUp /> : <FaChevronDown />}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </span>
-              </button>
-              {more && (
+                  </span>
+                </button>
                 <div
-                  className="inner-t absolute mt-1 right-0 w-fit p-[0.85rem] pt-[0.5rem] rounded-lg"
+                  className={`inner-t absolute mt-1 right-0 w-fit p-[0.85rem] pt-[0.5rem] rounded-lg bg-[#fff] ${
+                    more && "t-visible"
+                  }`}
                   style={{
                     border: `1px solid ${
                       theme !== "dark" ? "#E1DFDF" : "#332e2e"
@@ -119,62 +123,74 @@ const Navbar = () => {
                 >
                   <ul className="limo relative flex flex-col w-full gap-[0.35rem] p-2">
                     <li>
-                      <button className="flex items-center gap-[0.5rem] text-lg capitalize">
+                      <Link
+                        to="/student/profile"
+                        className="flex items-center gap-[0.5rem] text-lg capitalize"
+                      >
                         <span className="icon">
                           <CgProfile />
                         </span>
                         <span>View Profile</span>
-                      </button>
+                      </Link>
                     </li>
                     <li>
-                      <button className="flex items-center gap-[0.5rem] text-lg capitalize">
+                      <Link
+                        to="/student/feedback"
+                        className="flex items-center gap-[0.5rem] text-lg capitalize"
+                      >
                         <span className="icon">
                           <FaComment />
                         </span>
                         <span>Give Feedback</span>
-                      </button>
+                      </Link>
                     </li>
                     <li>
-                      <button className="flex items-center gap-[0.5rem] text-lg capitalize">
+                      <Link
+                        to="/student/certificate"
+                        className="flex items-center gap-[0.5rem] text-lg capitalize"
+                      >
                         <span className="icon">
                           <FaCertificate />
                         </span>
                         <span>Certificate</span>
-                      </button>
+                      </Link>
                     </li>
                     <li>
-                      <button className="flex items-center gap-[0.5rem] text-lg capitalize">
+                      <Link
+                        to="/logout"
+                        className="flex items-center gap-[0.5rem] text-lg capitalize"
+                      >
                         <span className="icon">
                           <AiOutlineLogout />
                         </span>
                         logout
-                      </button>
+                      </Link>
                     </li>
                   </ul>
                 </div>
-              )}
+              </div>
             </div>
-          </div>
-          <button
-            className="proof profile"
-            onClick={() => {
-              setVeil(true);
-              setShow(!show);
-            }}
-          >
-            <div
-              className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden"
-              style={{
-                border: "0px solid blue",
+            <button
+              className="proof profile"
+              onClick={() => {
+                setVeil(true);
+                setShow(!show);
               }}
             >
-              <img
-                src="/public/images/profile.png"
-                className="w-full h-full object-cover"
-                alt="..."
-              />
-            </div>
-          </button>
+              <div
+                className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden"
+                style={{
+                  border: "0px solid blue",
+                }}
+              >
+                <img
+                  src="/public/images/profile.png"
+                  className="w-full h-full object-cover"
+                  alt="..."
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </Nav>
       <div

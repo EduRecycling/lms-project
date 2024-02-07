@@ -1,33 +1,19 @@
-import { FaChevronRight, FaDownload } from "react-icons/fa6";
-import { Heading } from "../../landing/style";
-import Course from "../UI/Course";
-import { Link } from "react-router-dom";
+import { FaDownload } from "react-icons/fa6";
+import Note from "../UI/Note";
 
-const Courses = () => {
+const Notes = () => {
   return (
-    <div className="courses-container flex flex-col gap-1">
-      <div className="header">
-        <Heading.h3>My Courses</Heading.h3>
-        <p>Course you have enrolled for</p>
-      </div>
-      <div className="dwell flex justify-end items-center">
-        <Link to="/student/explore">
-          <button className="flex gap-1 items-center font-semibold text-lg p-1 px-2">
-            <span>Explore Courses</span>
-            <FaChevronRight />
-          </button>
-        </Link>
-      </div>
+    <div className="notes-container flex flex-col gap-1">
       <div
-        className="courses flex flex-wrap gap-4 p-2"
+        className="notes flex flex-wrap gap-4 p-2"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "1rem",
         }}
       >
-        {data.map((course) => {
-          return <Course course={course} />;
+        {data.map((note) => {
+          return <Note />;
         })}
         {data.length < 1 && (
           <div className="more flex flex-col items-center justify-center gap-2 mt-4 ta-c">
@@ -44,7 +30,7 @@ const Courses = () => {
   );
 };
 
-export default Courses;
+export default Notes;
 
 const data = [
   {

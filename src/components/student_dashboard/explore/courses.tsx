@@ -1,23 +1,9 @@
-import { FaChevronRight, FaDownload } from "react-icons/fa6";
-import { Heading } from "../../landing/style";
+import { FaDownload } from "react-icons/fa6";
 import Course from "../UI/Course";
-import { Link } from "react-router-dom";
 
 const Courses = () => {
   return (
     <div className="courses-container flex flex-col gap-1">
-      <div className="header">
-        <Heading.h3>My Courses</Heading.h3>
-        <p>Course you have enrolled for</p>
-      </div>
-      <div className="dwell flex justify-end items-center">
-        <Link to="/student/explore">
-          <button className="flex gap-1 items-center font-semibold text-lg p-1 px-2">
-            <span>Explore Courses</span>
-            <FaChevronRight />
-          </button>
-        </Link>
-      </div>
       <div
         className="courses flex flex-wrap gap-4 p-2"
         style={{
@@ -34,9 +20,7 @@ const Courses = () => {
             <div className="circle w-[240px] h-[240px] bg-secondary-10 text-[#fff] text-[6rem] grid place-content-center place-items-center rounded-full">
               <FaDownload />
             </div>
-            <p className="text-center">
-              You are not enrolled in any course at the moment
-            </p>
+            <p className="text-center">No course(s) avialable at the moment</p>
           </div>
         )}
       </div>
