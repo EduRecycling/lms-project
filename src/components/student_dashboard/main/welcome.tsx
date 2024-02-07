@@ -1,5 +1,6 @@
 import { Heading } from "../../landing/style";
 import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
+import { useContext } from "react";
 
 const Welcome = () => {
   const { theme } = useContext(ThemeContext) as ThemeContextType;
