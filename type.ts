@@ -31,3 +31,32 @@ export type feedback = {
   message: string;
   uid: string;
 };
+export type CourseFormValues = {
+  title: string;
+  description: string;
+  image: string;
+  modules: Module[];
+  references: Reference[];
+  tests: Test[];
+};
+
+export type Module = {
+  title: string;
+  description: string;
+  type: "video" | "article";
+  file?: File | null;
+  article?: string;
+  references: Reference[];
+};
+
+export type Reference = {
+  text: string;
+  url?: string;
+};
+
+export type Test = {
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  references?: Reference[];
+};
