@@ -42,6 +42,7 @@ export default {
       "secondary-100": "#ffffff",
       "neutral-colour-96": "#F3F4F0",
       "Neutral-colour": "#171E00",
+      danger: "#a00",
     },
   },
   plugins: [],

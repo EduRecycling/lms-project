@@ -16,6 +16,7 @@
     "@tensorflow/tfjs-backend-webgl": "^4.16.0",
     "@tensorflow/tfjs-converter": "^4.16.0",
     "@tensorflow/tfjs-core": "^4.16.0",
+    "@tinymce/tinymce-react": "^4.3.2",
     "animate.css": "^4.1.1",
     "body-scroll-lock": "^4.0.0-beta.0",
     "fingerpose": "^0.1.0",
