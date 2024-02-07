@@ -1,4 +1,4 @@
-import Welcome from "./Welcome";
+import Welcome from "./welcome";
 import Courses from "./courses";
 
 const Main = () => {

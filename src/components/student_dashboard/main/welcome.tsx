@@ -1,14 +1,16 @@
+import { useState } from "react";
 import { Heading } from "../../landing/style";
 
 const Welcome = () => {
-  const theme = "light";
+  const [theme, _] = useState("light");
+  // const theme = "light";
 
   return (
     <div className="welcome flex gap-4 flex-col">
       <div
         className="call pb-2"
         style={{
-          borderBottom: `2px solid ${theme !== "dark" ? "#252323" : "#332e2e"}`,
+          borderBottom: `2px solid${theme !== "dark" ? "#252323" : "#332e2e"}`,
         }}
       >
         <Heading.h2>Welcome Back Oluwatomi</Heading.h2>

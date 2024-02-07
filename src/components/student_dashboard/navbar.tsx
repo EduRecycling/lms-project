@@ -19,7 +19,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [veil, setVeil] = useState(false);
 
-  const theme = "s";
+  const [theme, _] = useState("s");
+
+  // const theme = "s";
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
