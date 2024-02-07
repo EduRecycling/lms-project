@@ -4,6 +4,7 @@ import Auth from "./components/auth";
 import NotFound from "./pages/notFound";
 import AboutPage from "./pages/about";
 import Dashboard from "./components/student_dashboard";
+import AdminPage from "./pages/admin";
 
 import Main from "./pages/student_dashboard/main";
 import Explore from "./pages/student_dashboard/explore_courses";
