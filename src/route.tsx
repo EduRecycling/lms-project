@@ -36,6 +36,7 @@ const PageRoute = () => {
       <Route path="/courses" element={<h1>Courses</h1>} />
       <Route path="/help" element={<h1>Need Help?</h1>} />
       <Route path="/login" element={<Auth />} />
+      <Route path="/admin" element={<AdminPage />} />
 
       <Route
         path="/student/dashboard"

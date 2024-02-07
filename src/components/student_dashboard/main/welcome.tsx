@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { Heading } from "../../landing/style";
 import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
 
