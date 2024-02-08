@@ -16,7 +16,7 @@ const Cordinator = () => {
       <div className="lint text-secondary-100 bg-primary-30">
         <TopTab />
       </div>
-      <div className="inner min-h-full h-full flex flex-col max-w-[1020px] m-auto w-full min-w-[280px] overflow-x-scroll">
+      <div className="inner min-h-full h-full flex flex-col max-w-[1020px] m-auto w-full min-w-[280px] overflow-x-auto">
         <Objective />
       </div>
       <div className="lint text-secondary-100 bg-primary-30">
