@@ -8,13 +8,13 @@ import { BsClock } from "react-icons/bs";
 
 const Outline = () => {
   const [view, setView] = useState(undefined);
-  const [isLesson, setIsLesson] = useState(false);
+  const [isLesson, setIsLesson] = useState(true);
 
   return (
     <div className="Outline flex flex-col gap-20">
       <div className="top bg-Primary_90 p-20 flex gap-3 flex-col justify-center items-center">
         <div className="opt flex w-full">
-          <button className="back w-14 h-14 text-xl rounded-full bg-[#fff] grid place-content-center place-items-center">
+          <button className="back w-14 h-14 text-xl rounded-full bg-[#fff] grid place-content-center place-items-center hover:opacity-80">
             <FaArrowLeft />
           </button>
         </div>
@@ -94,7 +94,9 @@ const Outline = () => {
         <div className="heading-r bg-Primary_90 text-secondary-10 p-10 px-20">
           <div className="inner flex gap-5 font-semibold text-lg">
             <button
-              className={`lesson capitalize ${isLesson && "underline"}`}
+              className={`lesson capitalize ${
+                isLesson && "underline"
+              } hover:opacity-80`}
               onClick={() => {
                 setIsLesson(true);
               }}
@@ -106,7 +108,9 @@ const Outline = () => {
               onClick={() => {
                 setIsLesson(false);
               }}
-              className={`lesson capitalize ${!isLesson && "underline"}`}
+              className={`lesson capitalize ${
+                !isLesson && "underline"
+              } hover:opacity-80`}
             >
               Course highlights
             </button>
@@ -179,16 +183,16 @@ const Line = ({
         </p>
         <div className="rit flex items-center gap-2">
           {lesson.locked ? (
-            <button className="start bg-primary-80 p-2 px-5 rounded-md font-semibold">
+            <button className="start bg-primary-80 p-2 px-5 rounded-md font-semibold hover:opacity-80">
               Locked
             </button>
           ) : (
-            <button className="start bg-Primary_10 text-secondary-100 p-2 px-5 rounded-md font-semibold">
+            <button className="start bg-Primary_10 text-secondary-100 p-2 px-5 rounded-md font-semibold hover:opacity-80">
               Start Lesson
             </button>
           )}
 
-          <button className="text-lg">
+          <button className="text-lg hover:opacity-80">
             {view === lesson ? <BiMinus /> : <FaPlus />}
           </button>
         </div>

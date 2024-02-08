@@ -1,4 +1,4 @@
-import { Iconic } from "../landing/style";
+import { Iconic } from "../../landing/style";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
 import {
@@ -10,10 +10,10 @@ import {
   FaComment,
 } from "react-icons/fa6";
 import { useContext, useEffect, useState } from "react";
-import { Nav } from "../style";
+import { Nav } from "./style";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { NavLink } from "react-router-dom";
-import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
+import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
 
 const Navbar = () => {
   const [more, setMore] = useState(false);
@@ -87,7 +87,7 @@ const Navbar = () => {
                   <span className="dit flex items-center gap-[0.75rem]">
                     <div className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden">
                       <img
-                        src="/public/images/profile.png"
+                        src="/images/profile.png"
                         className="w-full h-full object-cover"
                         alt="..."
                       />
@@ -183,7 +183,7 @@ const Navbar = () => {
                 }}
               >
                 <img
-                  src="/public/images/profile.png"
+                  src="/images/profile.png"
                   className="w-full h-full object-cover"
                   alt="..."
                 />
