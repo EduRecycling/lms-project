@@ -1,21 +1,21 @@
 import React, { useRef } from "react";
 import { Editor as TinyMCEEditor } from "@tinymce/tinymce-react";
-import { Module } from "../../../type";
 
 interface EditorInstance {
   getContent: () => string;
 }
 
 interface AppProps {
-  handleModuleChange: (
-    moduleIndex: number,
-    field: keyof Module | "referenceText" | "referenceUrl" | "article",
-    value: string | File
-  ) => void;
-  moduleIndex: number;
+  handleEditorChange: any;
+  moduleIndex?: number;
+  feedback?: boolean;
 }
 
-const Editor: React.FC<AppProps> = ({ handleModuleChange, moduleIndex }) => {
+const Editor: React.FC<AppProps> = ({
+  handleEditorChange,
+  moduleIndex,
+  feedback,
+}) => {
   const editorRef = useRef<EditorInstance | null>(null);
 
   // const log = () => {
@@ -23,16 +23,18 @@ const Editor: React.FC<AppProps> = ({ handleModuleChange, moduleIndex }) => {
   //     console.log(editorRef.current.getContent());
   //   }
   // };
-  const handleEditorChange = (content: string) => {
+  const handleChange = (content: string) => {
     // Update module's article content
-    handleModuleChange(moduleIndex, "article", content);
+    feedback
+      ? handleEditorChange(content)
+      : handleEditorChange(moduleIndex!, "article", content);
   };
   return (
     <>
       <TinyMCEEditor
         apiKey="omrp58s44cffyszc8fvt3412mqq2kqrgm19udvdolcby5a4i"
         onEditorChange={(content) => {
-          handleEditorChange(content);
+          handleChange(content);
         }}
         onInit={(_, editor) => (editorRef.current = editor)}
         initialValue="<p>This is the initial content of the editor.</p>"

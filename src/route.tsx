@@ -9,6 +9,7 @@ import AdminPage from "./pages/admin";
 import Main from "./pages/student_dashboard/main";
 import Explore from "./pages/student_dashboard/explore_courses";
 import Notes from "./pages/student_dashboard/notes";
+import FeedbackPage from "./pages/feedback";
 
 const PageRoute = () => {
   const SubPages = [
@@ -37,6 +38,7 @@ const PageRoute = () => {
       <Route path="/help" element={<h1>Need Help?</h1>} />
       <Route path="/login" element={<Auth />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/feedback" element={<FeedbackPage />} />
 
       <Route
         path="/student/dashboard"

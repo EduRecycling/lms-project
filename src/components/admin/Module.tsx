@@ -1,14 +1,15 @@
 import { Module } from "../../../type";
 import FileUI from "./FileUI";
-import Editor from "./editor";
+import Editor from "../editor";
 import Input from "./Input";
+import Button from "./Button";
 
 type Moduleprop = {
   modules: Module[];
   setModules: React.Dispatch<React.SetStateAction<Module[]>>;
 };
 export default function ModuleForm({ modules, setModules }: Moduleprop) {
-  const handleModuleChange = (
+  const handleEditorChange = (
     moduleIndex: number,
     field: keyof Module | "referenceText" | "referenceUrl",
     value: string | File
@@ -98,7 +99,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
             value={module.title}
             title="Title"
             onchange={(e: any) =>
-              handleModuleChange(moduleIndex, "title", e.target.value)
+              handleEditorChange(moduleIndex, "title", e.target.value)
             }
           />
           <Input
@@ -107,7 +108,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
             value={module.description}
             title="Description"
             onchange={(e: any) =>
-              handleModuleChange(moduleIndex, "description", e.target.value)
+              handleEditorChange(moduleIndex, "description", e.target.value)
             }
           />
 
@@ -121,7 +122,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
             className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
             value={module.type}
             onChange={(e) =>
-              handleModuleChange(
+              handleEditorChange(
                 moduleIndex,
                 "type",
                 e.target.value as "video" | "article"
@@ -135,7 +136,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
             <FileUI
               desc="Upload Video File"
               onChange={(e: any) => {
-                handleModuleChange(
+                handleEditorChange(
                   moduleIndex,
                   "file",
                   e.target.files?.[0] || null
@@ -148,7 +149,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
           ) : (
             <Editor
               moduleIndex={moduleIndex}
-              handleModuleChange={handleModuleChange}
+              handleEditorChange={handleEditorChange}
             />
           )}
           {module.file ? (
@@ -183,7 +184,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
                   value={reference.text}
                   title="Reference Text"
                   onchange={(e: any) =>
-                    handleModuleChange(
+                    handleEditorChange(
                       moduleIndex,
                       "referenceText",
                       e.target.value
@@ -195,7 +196,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
                   value={reference.url || ""}
                   title="Reference URL"
                   onchange={(e: any) =>
-                    handleModuleChange(
+                    handleEditorChange(
                       moduleIndex,
                       "referenceUrl",
                       e.target.value
@@ -221,22 +222,22 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
               </button>
             </div>
           </div>
-          <div className="flex justify-center">
-            <button
-              className=" p-4 bg-danger w-1/2 text-white text-base rounded-lg sml:text-xl my-4"
-              onClick={() => removeModule(moduleIndex)}
-            >
-              Remove Module
-            </button>
-          </div>
+
+          <Button
+            title="Remove Module"
+            onclick={() => removeModule(moduleIndex)}
+            color="bg-danger"
+            center
+          />
         </div>
       ))}
-      <button
-        className=" p-4 bg-primary-80 w-full text-white text-base rounded-lg sml:text-xl my-4"
-        onClick={() => addModule()}
-      >
-        Add Module
-      </button>
+
+      <Button
+        title="Add Module"
+        onclick={() => addModule()}
+        color="bg-primary-80"
+        full
+      />
     </div>
   );
 }

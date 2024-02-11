@@ -4,6 +4,7 @@ import { Reference, type Module, Test } from "../../../type";
 import TestForm from "./test";
 import References from "./References";
 import CourseInfo from "./CourseInfo";
+import Button from "./Button";
 
 export default function Admin() {
   const [references, setReferences] = useState<Reference[]>([
@@ -31,21 +32,23 @@ export default function Admin() {
       correctAnswer: "",
     },
   ]);
+  const handlePublish = () => {
+    const courses=[]
+  }
 
   return (
-    <div className="px-[20%]">
+    <div className="px-[5%] lg:px-[20%]">
       <CourseInfo courseInfo={courseInfo} setCourseInfo={setCourseInfo} />
       <ModuleForm modules={modules} setModules={setModules} />
       <TestForm tests={tests} setTests={setTests} />
       <References references={references} setReferences={setReferences} />
-      <div className="flex ">
-        <button
-          className=" p-4 bg-primary-50 w-full text-white text-base rounded-lg sml:text-xl my-4"
-          onClick={() => {}}
-        >
-          Publish Course
-        </button>
-      </div>
+
+      <Button
+        title="Publish Course"
+        onclick={() => {}}
+        full
+        color="bg-primary-50"
+      />
     </div>
   );
 }
