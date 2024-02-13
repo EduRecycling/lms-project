@@ -18,13 +18,13 @@ export default function Admin() {
       type: "video",
       references: [{ text: "", url: "" }],
       file: null,
-      tests: [
-        {
-          question: "",
-          options: [" ", " ", " ", " "],
-          correctAnswer: "",
-        },
-      ],
+      //   tests: [
+      //     {
+      //       question: "",
+      //       options: [" ", " ", " ", " "],
+      //       correctAnswer: "",
+      //     },
+      //   ],
       article: "",
     },
   ]);

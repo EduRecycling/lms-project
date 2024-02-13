@@ -41,7 +41,12 @@ export default function CourseInfo({ courseInfo, setCourseInfo }: prop) {
         placeholder="Enter The Course Title"
         onchange={handleCourseInfoChange}
       />
-
+      <p
+        className="text-black font-[roboto] text-base mt-2 font-semibold mr-3"
+        style={{ letterSpacing: "0.08px" }}
+      >
+        Description
+      </p>
       <Editor handleEditorChange={handleEditorChange} feedback />
       <FileUI
         title="Course Image"
