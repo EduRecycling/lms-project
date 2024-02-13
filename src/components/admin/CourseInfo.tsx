@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Editor from "../editor";
 import FileUI from "./FileUI";
 import Input from "./Input";
