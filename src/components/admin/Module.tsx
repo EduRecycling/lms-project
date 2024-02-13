@@ -115,7 +115,7 @@ export default function ModuleForm({
             title="zModule Image"
             // ref={image}
             desc={"Upload Course Image"}
-            onChange={(e: any) => {
+            onChange={(_: any) => {
               // console.log("image picked", courseInfo.image);
               // handleCourseInfoChange(e);
               // console.log("image selected", courseInfo.image);
