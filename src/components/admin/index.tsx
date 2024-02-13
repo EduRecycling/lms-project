@@ -15,9 +15,18 @@ export default function Admin() {
     {
       title: "",
       description: "",
+      image: null,
       type: "video",
       references: [{ text: "", url: "" }],
       file: null,
+      tests: [
+        {
+          question: "",
+          options: [" ", " ", " ", " "],
+          correctAnswer: "",
+        },
+      ],
+      article: "",
     },
   ]);
   const [courseInfo, setCourseInfo] = useState({
@@ -32,15 +41,17 @@ export default function Admin() {
       correctAnswer: "",
     },
   ]);
-  const handlePublish = () => {
-    const courses=[]
-  }
 
   return (
     <div className="px-[5%] lg:px-[20%]">
       <CourseInfo courseInfo={courseInfo} setCourseInfo={setCourseInfo} />
-      <ModuleForm modules={modules} setModules={setModules} />
-      <TestForm tests={tests} setTests={setTests} />
+      <ModuleForm
+        modules={modules}
+        setModules={setModules}
+        tests={tests}
+        setTests={setTests}
+      />
+
       <References references={references} setReferences={setReferences} />
 
       <Button

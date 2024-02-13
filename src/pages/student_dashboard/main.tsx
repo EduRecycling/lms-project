@@ -1,3 +1,12 @@
+import Dashboard from "../../components/student_dashboard/layout";
 import Main from "../../components/student_dashboard/main";
 
-export default Main;
+const StudentHome = () => {
+  return (
+    <Dashboard>
+      <Main />
+    </Dashboard>
+  );
+};
+
+export default StudentHome;

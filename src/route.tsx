@@ -3,13 +3,12 @@ import LandingPage from "./pages/landingPage";
 import Auth from "./components/auth";
 import NotFound from "./pages/notFound";
 import AboutPage from "./pages/about";
-import Dashboard from "./components/student_dashboard";
 import AdminPage from "./pages/admin";
 
-import Main from "./pages/student_dashboard/main";
-import Explore from "./pages/student_dashboard/explore_courses";
-import Notes from "./pages/student_dashboard/notes";
-import FeedbackPage from "./pages/feedback";
+import Dashboard from "./components/student_dashboard/layout";
+
+import { Explore, StudentHome, StudentNote } from "./pages/student_dashboard";
+import { Cordinator, CourseHome, CourseOutline } from "./pages/course";
 
 const PageRoute = () => {
   const SubPages = [
@@ -38,32 +37,14 @@ const PageRoute = () => {
       <Route path="/help" element={<h1>Need Help?</h1>} />
       <Route path="/login" element={<Auth />} />
       <Route path="/admin" element={<AdminPage />} />
-      <Route path="/feedback" element={<FeedbackPage />} />
 
-      <Route
-        path="/student/dashboard"
-        element={
-          <Dashboard>
-            <Main />
-          </Dashboard>
-        }
-      />
-      <Route
-        path="/student/explore"
-        element={
-          <Dashboard>
-            <Explore />
-          </Dashboard>
-        }
-      />
-      <Route
-        path="/student/notes"
-        element={
-          <Dashboard>
-            <Notes />
-          </Dashboard>
-        }
-      />
+      <Route path="/student/dashboard" element={<StudentHome />} />
+      <Route path="/student/explore" element={<Explore />} />
+      <Route path="/student/notes" element={<StudentNote />} />
+
+      <Route path="/student/course/1" element={<CourseHome />} />
+      <Route path="/student/course/1/outline" element={<CourseOutline />} />
+      <Route path="/student/course/1/cordinator" element={<Cordinator />} />
 
       {SubPages.map((spage) => {
         return (

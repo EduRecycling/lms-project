@@ -1,14 +1,22 @@
-import { Module } from "../../../type";
+import { Module, Test } from "../../../type";
 import FileUI from "./FileUI";
 import Editor from "../editor";
 import Input from "./Input";
 import Button from "./Button";
+import TestForm from "./test";
 
 type Moduleprop = {
   modules: Module[];
   setModules: React.Dispatch<React.SetStateAction<Module[]>>;
+  tests: Test[];
+  setTests: React.Dispatch<React.SetStateAction<Test[]>>;
 };
-export default function ModuleForm({ modules, setModules }: Moduleprop) {
+export default function ModuleForm({
+  modules,
+  setModules,
+  setTests,
+  tests,
+}: Moduleprop) {
   const handleEditorChange = (
     moduleIndex: number,
     field: keyof Module | "referenceText" | "referenceUrl",
@@ -44,6 +52,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
       {
         title: "",
         description: "",
+        image: null,
         type: "video",
         references: [{ text: "", url: "" }],
         file: null,
@@ -102,16 +111,24 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
               handleEditorChange(moduleIndex, "title", e.target.value)
             }
           />
-          <Input
-            placeholder="Enter The Module Description"
-            name="description"
-            value={module.description}
-            title="Description"
-            onchange={(e: any) =>
-              handleEditorChange(moduleIndex, "description", e.target.value)
-            }
+          <FileUI
+            title="zModule Image"
+            // ref={image}
+            desc={"Upload Course Image"}
+            onChange={(e: any) => {
+              // console.log("image picked", courseInfo.image);
+              // handleCourseInfoChange(e);
+              // console.log("image selected", courseInfo.image);
+            }}
+            name={"image"}
+            type="image/*"
+            multiple
           />
-
+          <Editor
+            name="Description"
+            moduleIndex={moduleIndex}
+            handleEditorChange={handleEditorChange}
+          />
           <p
             className="text-black font-[roboto] text-base mt-2 font-semibold mr-3"
             style={{ letterSpacing: "0.08px" }}
@@ -148,6 +165,7 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
             />
           ) : (
             <Editor
+              name="article"
               moduleIndex={moduleIndex}
               handleEditorChange={handleEditorChange}
             />
@@ -231,11 +249,12 @@ export default function ModuleForm({ modules, setModules }: Moduleprop) {
           />
         </div>
       ))}
+      <TestForm setTests={setTests} tests={tests} />
 
       <Button
         title="Add Module"
         onclick={() => addModule()}
-        color="bg-primary-80"
+        color="bg-primary-20"
         full
       />
     </div>

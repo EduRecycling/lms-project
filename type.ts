@@ -37,16 +37,17 @@ export type CourseFormValues = {
   image: string;
   modules: Module[];
   references: Reference[];
-  tests: Test[];
 };
 
 export type Module = {
   title: string;
   description: string;
+  image: File | null;
   type: "video" | "article";
   file?: File | null;
   article?: string;
   references: Reference[];
+  tests?: Test[];
 };
 
 export type Reference = {

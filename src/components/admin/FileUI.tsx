@@ -8,9 +8,10 @@ type prop = {
   type: string;
   name?: string;
   title?: string;
+  multiple?: boolean;
 };
 
-function FileUI({ onChange, desc, type, name, title }: prop) {
+function FileUI({ onChange, desc, type, name, title, multiple }: prop) {
   const ref: React.MutableRefObject<any> = useRef();
   return (
     <>
@@ -35,6 +36,7 @@ function FileUI({ onChange, desc, type, name, title }: prop) {
           ref={ref}
           onChange={(e) => onChange(e)}
           name={name ? name : ""}
+          multiple={multiple}
         />
       </div>
     </>

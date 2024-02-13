@@ -9,12 +9,14 @@ interface AppProps {
   handleEditorChange: any;
   moduleIndex?: number;
   feedback?: boolean;
+  name?: string;
 }
 
 const Editor: React.FC<AppProps> = ({
   handleEditorChange,
   moduleIndex,
   feedback,
+  name,
 }) => {
   const editorRef = useRef<EditorInstance | null>(null);
 
@@ -27,7 +29,7 @@ const Editor: React.FC<AppProps> = ({
     // Update module's article content
     feedback
       ? handleEditorChange(content)
-      : handleEditorChange(moduleIndex!, "article", content);
+      : handleEditorChange(moduleIndex!, name, content);
   };
   return (
     <>

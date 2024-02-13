@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-import Footer from "../footer";
-import Navbar from "./navbar";
+import Footer from "../../footer";
+import Navbar from "../../navbar/auth";
 
 const Dashboard = ({ children }: { children: ReactElement }) => {
   return (

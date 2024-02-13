@@ -1,3 +1,12 @@
-import Explore from "../../components/student_dashboard/explore";
+import Exp from "../../components/student_dashboard/explore";
+import Dashboard from "../../components/student_dashboard/layout";
 
-export default Explore;
+const StudentExplore = () => {
+  return (
+    <Dashboard>
+      <Exp />
+    </Dashboard>
+  );
+};
+
+export default StudentExplore;

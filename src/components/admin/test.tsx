@@ -60,6 +60,12 @@ const TestForm: React.FC<TestFormProps> = ({ tests, setTests }) => {
 
       {tests.map((test, index) => (
         <div key={index}>
+          <p
+            className="text-black font-[roboto] text-xl text-center mt-2 font-semibold mr-3"
+            style={{ letterSpacing: "0.08px" }}
+          >
+            Question {index + 1}
+          </p>
           <Input
             title="Question :"
             name="title"

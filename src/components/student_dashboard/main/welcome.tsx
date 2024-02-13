@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Heading } from "../../landing/style";
+import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
+import { useContext } from "react";
 
 const Welcome = () => {
-  const [theme, _] = useState("light");
-
-  // const theme = "light";
+  const { theme } = useContext(ThemeContext) as ThemeContextType;
 
   return (
     <div className="welcome flex gap-4 flex-col">
