@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.2.1",
     "@tensorflow-models/coco-ssd": "^2.2.3",
     "@tensorflow/tfjs": "^4.16.0",
     "@tensorflow/tfjs-backend-cpu": "^4.16.0",
@@ -24,9 +25,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.21.3",
     "react-simple-star-rating": "^5.1.7",
     "react-webcam": "^7.2.0",
+    "remark-gfm": "^4.0.0",
     "styled-components": "^6.1.8",
     "wow.js": "^1.2.2"
   },
