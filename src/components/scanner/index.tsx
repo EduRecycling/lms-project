@@ -104,20 +104,6 @@ const ObjectDetection: React.FC = () => {
     detectObjects();
   };
 
-  const markdown = `A paragraph with *emphasis* and **strong importance**.
-
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
-
-* Lists
-* [ ] todo
-* [x] done
-
-A table:
-
-| a | b |
-| - | - |
-`;
-
   return (
     <>
       <div className="px-[5%] lg:px-[10%] min-h-[100vh]">
