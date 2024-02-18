@@ -1,6 +1,6 @@
 import BottomTab from "./BottomTab";
 import TopTab from "./TopTab";
-import Objective from "./tools/objective";
+import { Objective } from "./tools";
 
 const Cordinator = () => {
   return (
@@ -10,7 +10,7 @@ const Cordinator = () => {
         display: "grid",
         gridTemplateColumns: "1fr",
         gridTemplateRows: "90px 1fr 90px",
-        minHeight: "calc(100svh - 90px)",
+        minHeight: "calc(100svh)",
       }}
     >
       <div className="lint text-secondary-100 bg-primary-30">
