@@ -10,6 +10,7 @@ export default {
     },
     backgroundImage: {
       auth: "url('./images/auth/authPicture.png')",
+      banner: "url('./images/auth/banner-img.png')",
     },
     colors: {
       Primary_30: "#005600",

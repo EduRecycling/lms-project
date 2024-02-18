@@ -14,6 +14,7 @@ import {
   CourseHome,
   CourseOutline,
 } from "./pages/course";
+import ObjectDetection from "./components/scanner";
 
 const PageRoute = () => {
   const SubPages = [
@@ -42,6 +43,7 @@ const PageRoute = () => {
       <Route path="/help" element={<h1>Need Help?</h1>} />
       <Route path="/login" element={<Auth />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/scanner" element={<ObjectDetection />} />
 
       <Route path="/student/dashboard" element={<StudentHome />} />
       <Route path="/student/explore" element={<Explore />} />
