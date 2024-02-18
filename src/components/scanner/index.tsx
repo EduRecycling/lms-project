@@ -105,7 +105,7 @@ const ObjectDetection: React.FC = () => {
   };
 
   return (
-    <>
+    <> 
       <div className="px-[5%] lg:px-[10%] min-h-[100vh]">
         <div className="w-full">
           <div className="flex justify-center">

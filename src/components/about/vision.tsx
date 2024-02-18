@@ -52,7 +52,7 @@ export default Visions;
 
 const Vision = ({ vision }: { vision: visionType }) => {
   return (
-    <div className="test-modal min-w-[300px] w-[calc(280px + 5vmin)] max-w-[400px] p-5 py-8 rounded-md flex flex-col  gap-2 bg-neutral-colour-96 shadow-md animate__animated animate__fadeInUp wow border border-solid border-primary-90">
+    <div className="test-modal min-w-[300px] w-[calc(280px + 5vmin)] max-w-[400px] p-5 py-8 rounded-md flex-[0.3] flex-col  gap-2 bg-neutral-colour-96 shadow-md animate__animated animate__fadeInUp wow border border-solid border-primary-90">
       <p className="text-primary text-[roboto] text-2xl font-semibold">
         {vision.title}
       </p>

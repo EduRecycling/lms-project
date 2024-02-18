@@ -66,7 +66,7 @@ export default Testimonial;
 
 const Testimony = ({ comment }: { comment: CommentType }) => {
   return (
-    <div className="test-modal min-w-[300px] w-[calc(280px + 5vmin)] max-w-[400px] p-5 py-8 rounded-md flex flex-col items-center gap-2 bg-[#CBEBBF] shadow-md animate__animated animate__fadeInUp wow">
+    <div className="test-modal min-w-[300px] w-[calc(280px + 5vmin)] max-w-[400px] p-5 py-8 rounded-md flex-[0.3] flex-col justify-evenly items-center gap-2 bg-[#CBEBBF] shadow-md animate__animated animate__fadeInUp wow">
       <div className="ratings w-full flex justify-center">
         <Rating
           size={30}
@@ -76,7 +76,7 @@ const Testimony = ({ comment }: { comment: CommentType }) => {
           fillColor="#082100"
         />
       </div>
-      <div className="comment text-center">
+      <div className="comment text-xs my-4 text-center">
         <p>{comment.text}</p>
       </div>
       <div className="persona flex items-center flex-col">
