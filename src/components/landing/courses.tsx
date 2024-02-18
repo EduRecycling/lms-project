@@ -15,7 +15,7 @@ interface CourseType {
 const data = [
   {
     id: "1",
-    title: "Community Recylying",
+    title: "Community Recyling",
     description: `Recycling programs promote community engagement and collaboration. They bring residents together, fostering a sense of unity and shared knowledge.`,
     price: null,
     link: "",
