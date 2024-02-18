@@ -30,26 +30,26 @@ const Courses = () => {
 export default Courses;
 
 const data: any[] = [
-  //   {
-  //     id: "1",
-  //     title: "Community Development Projects",
-  //     description: `Community Development Projects
+  {
+    id: "1",
+    title: "Community Development Projects",
+    description: `Community Development Projects
   // Get featured in community development portfolios for a better
   // greener economy`,
-  //     image: "/images/offerings/community.png",
-  //   },
-  //   {
-  //     id: "2",
-  //     title: "Kids Recycling's Projects",
-  //     description: `Get your kids recycling's projects featured in our portfolio for a better
+    image: "/images/offerings/community.png",
+  },
+  {
+    id: "2",
+    title: "Kids Recycling's Projects",
+    description: `Get your kids recycling's projects featured in our portfolio for a better
   // and greener economy`,
-  //     image: "/images/offerings/kids.png",
-  //   },
-  //   {
-  //     id: "3",
-  //     title: "Recyclying Hackathon Projects",
-  //     description: `Introducing a platform for recyclying hackathon for a better
+    image: "/images/offerings/kids.png",
+  },
+  {
+    id: "3",
+    title: "Recyclying Hackathon Projects",
+    description: `Introducing a platform for recyclying hackathon for a better
   // green economy`,
-  //     image: "/images/offerings/hackathon.png",
-  //   },
+    image: "/images/offerings/hackathon.png",
+  },
 ];
