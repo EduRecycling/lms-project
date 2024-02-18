@@ -12,13 +12,13 @@ const Outline = () => {
 
   return (
     <div className="Outline flex flex-col gap-20">
-      <div className="top bg-Primary_90 p-20 flex gap-3 flex-col justify-center items-center">
+      <div className="top min-h-svh bg-Primary_90 p-20 flex gap-3 flex-col justify-center items-center">
         <div className="opt flex w-full">
           <button className="back w-14 h-14 text-xl rounded-full bg-[#fff] grid place-content-center place-items-center hover:opacity-80">
             <FaArrowLeft />
           </button>
         </div>
-        <div className="inner flex gap-14 justify-center w-full">
+        <div className="inner flex flex-col md:flex-row gap-14 justify-center w-full">
           <div className="if basis-[50%] flex flex-col gap-5 max-w-[740px]">
             <div className="header-t">
               <Heading.h2 className="font-semibold">

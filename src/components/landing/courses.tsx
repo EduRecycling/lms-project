@@ -15,20 +15,21 @@ interface CourseType {
 const data = [
   {
     id: "1",
+    title: "Community Recyling",
+    description: `Recycling programs promote community engagement and collaboration. They bring residents together, fostering a sense of unity and shared knowledge.`,
+    price: null,
+    link: "",
+    image: "/images/courses/community.png",
+  },
+  {
+    id: "2",
     title: "Kids Recylying",
     description: `Taking care of the planet isn't just for Earth Day! Read on to learn about how to teach your children what it is to make a difference every day by reducing, reusing, and recycling!`,
     price: null,
     link: "",
     image: "/images/courses/kid.png",
   },
-  {
-    id: "2",
-    title: "Community Recylying",
-    description: `Recycling programs promote community engagement and collaboration. They bring residents together, fostering a sense of unity and shared knowledge.`,
-    price: null,
-    link: "",
-    image: "/images/courses/community.png",
-  },
+
   {
     id: "3",
     title: "Resource Recylying",

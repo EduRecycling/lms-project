@@ -5,7 +5,7 @@ import { Heading } from "../../landing/style";
 
 const Welcome = () => {
   return (
-    <div className="index flex flex-col gap-5">
+    <div className="index flex flex-col gap-5 pt-20">
       <div className="top bg-Primary_90 text-secondary-10 p-14 flex justify-center items-center">
         <div className="inner text-center">
           <Heading.h2 className="font-semibold">
@@ -15,7 +15,7 @@ const Welcome = () => {
         </div>
       </div>
       <div className="About p-8">
-        <div className="inner flex justify-center gap-3">
+        <div className="inner flex flex-col md:flex-row justify-center gap-3">
           <div className="info basis-[50%] max-w-[540px]">
             <Heading.h3 className="font-semibold">About the Course</Heading.h3>
             <div className="sumary mt-2 flex gap-3 flex-col">

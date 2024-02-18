@@ -8,7 +8,12 @@ import AdminPage from "./pages/admin";
 import Dashboard from "./components/student_dashboard/layout";
 
 import { Explore, StudentHome, StudentNote } from "./pages/student_dashboard";
-import { Cordinator, CourseHome, CourseOutline } from "./pages/course";
+import {
+  Certificate,
+  Cordinator,
+  CourseHome,
+  CourseOutline,
+} from "./pages/course";
 import ObjectDetection from "./components/scanner";
 
 const PageRoute = () => {
@@ -47,6 +52,7 @@ const PageRoute = () => {
       <Route path="/student/course/1" element={<CourseHome />} />
       <Route path="/student/course/1/outline" element={<CourseOutline />} />
       <Route path="/student/course/1/cordinator" element={<Cordinator />} />
+      <Route path="/student/course/1/certificate" element={<Certificate />} />
 
       {SubPages.map((spage) => {
         return (

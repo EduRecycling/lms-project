@@ -1,7 +1,9 @@
-import { FaChevronRight, FaDownload } from "react-icons/fa6";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FaChevronRight } from "react-icons/fa6";
 import { Heading } from "../../landing/style";
 import Course from "../UI/Course";
 import { Link } from "react-router-dom";
+import { VscEmptyWindow } from "react-icons/vsc";
 
 const Courses = () => {
   return (
@@ -19,10 +21,8 @@ const Courses = () => {
         </Link>
       </div>
       <div
-        className="courses flex flex-wrap gap-4 p-2"
+        className="courses gap-4 p-2 flex flex-wrap justify-center max-w-[1080px] m-auto"
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "1rem",
         }}
       >
@@ -32,7 +32,7 @@ const Courses = () => {
         {data.length < 1 && (
           <div className="more flex flex-col items-center justify-center gap-2 mt-4 ta-c">
             <div className="circle w-[240px] h-[240px] bg-secondary-10 text-[#fff] text-[6rem] grid place-content-center place-items-center rounded-full">
-              <FaDownload />
+              <VscEmptyWindow />
             </div>
             <p className="text-center">
               You are not enrolled in any course at the moment
@@ -46,27 +46,27 @@ const Courses = () => {
 
 export default Courses;
 
-const data = [
-  {
-    id: "1",
-    title: "Community Development Projects",
-    description: `Community Development Projects 
-Get featured in community development portfolios for a better
-greener economy`,
-    image: "/images/offerings/community.png",
-  },
-  {
-    id: "2",
-    title: "Kids Recycling's Projects",
-    description: `Get your kids recycling's projects featured in our portfolio for a better 
-and greener economy`,
-    image: "/images/offerings/kids.png",
-  },
-  {
-    id: "3",
-    title: "Recyclying Hackathon Projects",
-    description: `Introducing a platform for recyclying hackathon for a better
-green economy`,
-    image: "/images/offerings/hackathon.png",
-  },
+const data: any[] = [
+  //   {
+  //     id: "1",
+  //     title: "Community Development Projects",
+  //     description: `Community Development Projects
+  // Get featured in community development portfolios for a better
+  // greener economy`,
+  //     image: "/images/offerings/community.png",
+  //   },
+  //   {
+  //     id: "2",
+  //     title: "Kids Recycling's Projects",
+  //     description: `Get your kids recycling's projects featured in our portfolio for a better
+  // and greener economy`,
+  //     image: "/images/offerings/kids.png",
+  //   },
+  //   {
+  //     id: "3",
+  //     title: "Recyclying Hackathon Projects",
+  //     description: `Introducing a platform for recyclying hackathon for a better
+  // green economy`,
+  //     image: "/images/offerings/hackathon.png",
+  //   },
 ];
