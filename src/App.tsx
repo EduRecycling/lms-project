@@ -1,12 +1,8 @@
 import WOW from "wow.js";
-import PageRoute from "./route";
+import Peg from "./Index";
 
 export default function App() {
   new WOW().init();
 
-  return (
-    <>
-      <PageRoute />
-    </>
-  );
+  return <Peg />;
 }
