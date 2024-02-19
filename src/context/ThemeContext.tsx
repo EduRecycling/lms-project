@@ -7,7 +7,7 @@ type PropsType = {
   children: any;
 };
 
-type ThemeContextType = {
+export type ThemeContextType = {
   theme: string;
   toggleTheme: (code: string | number) => void;
 };
