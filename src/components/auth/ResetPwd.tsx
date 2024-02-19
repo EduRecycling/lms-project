@@ -23,6 +23,7 @@ export default function ResetPwd() {
         type="text"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your Email Address"
+        required
       />
 
       <button className="border-none w-full rounded p-4 mt-8 text-white font-[roboto] text-base bg-Primary_70">

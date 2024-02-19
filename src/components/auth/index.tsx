@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IoMdArrowBack } from "react-icons/io";
 
 import ExternalAuth from "./ExternalAuth";
@@ -7,6 +8,7 @@ import LogIn from "./LogIn";
 import ResetPwd from "./ResetPwd";
 import { useNavigate } from "react-router";
 import { Footer } from "../landing";
+import { UseAuth } from "../../firebase/authFuntions";
 
 type control = {
   login: boolean;
@@ -47,6 +49,47 @@ export default function Auth() {
 
   const navigate = useNavigate();
 
+  const { user, logIn, signUp } = UseAuth();
+  const [err, setErr] = useState<string | undefined>(undefined);
+
+  if (user) {
+    navigate("/");
+  }
+
+  const handleLogin = (e: any) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+    logIn(email, password)
+      .then((result: any) => {
+        console.log(result);
+
+        navigate("/");
+      })
+      .catch((error: { message: any }) => {
+        setErr(error.message);
+      });
+
+    e.target.reset();
+  };
+
+  const handleSignup = (e: any) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signUp(email, password)
+      .then((result: any) => {
+        console.log(result);
+
+        navigate("/");
+      })
+      .catch((error: any) => {
+        setErr(error);
+      });
+    e.target.reset();
+  };
+
   return (
     <section className="px-[5%] py-[2%] h-full bg-background">
       <button
@@ -56,7 +99,7 @@ export default function Auth() {
       >
         <IoMdArrowBack className=" text-3xl my-3" />
       </button>
-      <img
+      {/* <img
         src="/images/logo1.png"
         alt={"logo"}
         width={100}
@@ -64,7 +107,7 @@ export default function Auth() {
         onClick={() => {
           navigate("/");
         }}
-      />
+      /> */}
       <div className="flex items-center bg-auth bg-no-repeat   bg-cover bg-center  p-[5%] lg:p-0 lg:[background-image:none] ">
         <div
           style={{ height: height == 0 ? "auto" : height }}
@@ -90,7 +133,15 @@ export default function Auth() {
               </p>
             </div>
           )}
-          <form className="mt-3 ">
+          <form
+            className="mt-3 "
+            onSubmit={(e) => {
+              console.log("go");
+              if (controlAuth.login) handleLogin(e);
+              else if (controlAuth.SignUp) handleSignup(e);
+            }}
+          >
+            <p className="error text-{#8f0707]">{err}</p>{" "}
             {controlAuth.SignUp && <SignUp />}
             {controlAuth.recover && <ResetPwd />}
             {controlAuth.login && (
@@ -104,7 +155,6 @@ export default function Auth() {
                 </p>
               </>
             )}
-
             {!controlAuth.recover && <ExternalAuth />}
           </form>
         </div>

@@ -4,7 +4,7 @@ import Courses from "./courses";
 const Explore = () => {
   return (
     <div className="explore p-1 flex flex-col gap-3">
-      <div className="Topper">
+      <div className="Topper text-center">
         <Heading.h3>Explore Courses</Heading.h3>
       </div>
       <Courses />

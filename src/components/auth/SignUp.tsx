@@ -9,8 +9,11 @@ export default function SignUp() {
       </p>
       <input
         type="text"
+        id="firstname"
+        name="firstname"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your First Name"
+        required
       />
       <p
         className="text-black font-[roboto] text-base mt-2 "
@@ -19,9 +22,12 @@ export default function SignUp() {
         Last Name
       </p>
       <input
+        id="lastname"
+        name="lastname"
         type="text"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your Last Name"
+        required
       />
       <p
         className="text-black font-[roboto] text-base mt-2 "
@@ -30,9 +36,12 @@ export default function SignUp() {
         Email Address
       </p>
       <input
-        type="text"
+        type="email"
+        id="email"
+        name="email"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your Email Address"
+        required
       />
       <p
         className="text-black font-[roboto] text-base mt-2 "
@@ -41,9 +50,12 @@ export default function SignUp() {
         Password
       </p>
       <input
+        id="password"
+        name="password"
         type="password"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your Password"
+        required
       />
       <p
         className="text-black font-[roboto] text-base mt-2 "
@@ -52,11 +64,17 @@ export default function SignUp() {
         Phone Number
       </p>
       <input
-        type="text"
+        type="phone"
+        id="phoneno"
+        name="phoneno"
         className="py-3 px-2 border border-solid w-full my-2 border-Primary_90"
         placeholder="Enter Your Phone Number"
+        required
       />
-      <button className="border-none w-full rounded p-4 mt-8 text-white font-[roboto] text-base bg-Primary_70">
+      <button
+        type="submit"
+        className="border-none w-full rounded p-4 mt-8 text-white font-[roboto] text-base bg-Primary_70"
+      >
         Create An Account
       </button>
     </div>

@@ -7,7 +7,7 @@ type PropsType = {
   children: any;
 };
 
-export type ThemeContextType = {
+type ThemeContextType = {
   theme: string;
   toggleTheme: (code: string | number) => void;
 };
@@ -16,7 +16,6 @@ export const ThemeContext = React.createContext<ThemeContextType | null>(null);
 
 const db_theme_key = "theme";
 
-// const ThemeContextProvider = ({ children }: BoxProps) => {
 export default class ThemeContextProvider extends React.Component<PropsType> {
   state = {
     theme: document.documentElement.className,
