@@ -2,10 +2,10 @@
 import { IoMdArrowBack } from "react-icons/io";
 
 import ExternalAuth from "./ExternalAuth";
-import SignUp from "./SignUp";
-import { useEffect, useRef, useState } from "react";
-import LogIn from "./LogIn";
-import ResetPwd from "./ResetPwd";
+// import SignUp from "./SignUp";
+import {  useRef, useState } from "react";
+// import LogIn from "./LogIn";
+// import ResetPwd from "./ResetPwd";
 import { useNavigate } from "react-router";
 import { Footer } from "../landing";
 import { UseAuth } from "../../firebase/authFuntions";
@@ -22,30 +22,30 @@ export default function Auth() {
     SignUp: false,
     recover: false,
   });
-  const [height, setHeight] = useState<number>(0);
+  // const [height, setHeight] = useState<number>(0);
 
   const myFormRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (myFormRef.current) {
-      // Access the offsetHeight property to get the height
-      setHeight(myFormRef.current.offsetHeight);
-      console.log("Element height:", height);
-    }
-  }, [controlAuth]);
-  const handleAuthControl = (actionType: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setControlAuth((prevControlAuth: control | any) => {
-      if (actionType === "login") {
-        return { login: true, SignUp: false, recover: false };
-      } else if (actionType === "signup") {
-        return { login: false, SignUp: true, recover: false };
-      } else if (actionType === "recover") {
-        return { login: false, SignUp: false, recover: true };
-      }
-      // Default: If none of the above action types match, return the previous state
-      return prevControlAuth;
-    });
-  };
+  // useEffect(() => {
+  //   if (myFormRef.current) {
+  //     // Access the offsetHeight property to get the height
+  //     setHeight(myFormRef.current.offsetHeight);
+  //     console.log("Element height:", height);
+  //   }
+  // }, [controlAuth]);
+  // const handleAuthControl = (actionType: string) => {
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   setControlAuth((prevControlAuth: control | any) => {
+  //     if (actionType === "login") {
+  //       return { login: true, SignUp: false, recover: false };
+  //     } else if (actionType === "signup") {
+  //       return { login: false, SignUp: true, recover: false };
+  //     } else if (actionType === "recover") {
+  //       return { login: false, SignUp: false, recover: true };
+  //     }
+  //     // Default: If none of the above action types match, return the previous state
+  //     return prevControlAuth;
+  //   });
+  // };
 
   const navigate = useNavigate();
 
@@ -110,10 +110,10 @@ export default function Auth() {
       /> */}
       <div className="flex items-center bg-auth bg-no-repeat   bg-cover bg-center  p-[5%] lg:p-0 lg:[background-image:none] ">
         <div
-          style={{ height: height == 0 ? "auto" : height }}
+          // style={{ height: height == 0 ? "auto" : height }}
           className="lg:basis-1/2 flex-1 w-full lg:overflow-scroll lg:no-scrollbar h-full bg-[rgba(225,225,225,0.9)] lg:bg-white p-[5%]"
         >
-          {!controlAuth.recover && (
+          {/* {!controlAuth.recover && (
             <div className=" flex justify-evenly mb-6">
               <p
                 className={`text-black font-[roboto] lg:text-3xl text-xl p-3 cursor-pointer ${
@@ -132,7 +132,7 @@ export default function Auth() {
                 Log In
               </p>
             </div>
-          )}
+          )} */}
           <form
             className="mt-3 "
             onSubmit={(e) => {
@@ -142,7 +142,7 @@ export default function Auth() {
             }}
           >
             <p className="error text-{#8f0707]">{err}</p>{" "}
-            {controlAuth.SignUp && <SignUp />}
+            {/* {controlAuth.SignUp && <SignUp />}
             {controlAuth.recover && <ResetPwd />}
             {controlAuth.login && (
               <>
@@ -155,7 +155,8 @@ export default function Auth() {
                 </p>
               </>
             )}
-            {!controlAuth.recover && <ExternalAuth />}
+            {!controlAuth.recover && <ExternalAuth />} */}
+            <ExternalAuth />
           </form>
         </div>
         <div

@@ -129,7 +129,7 @@ function LayoutComponent() {
 
 function RoleSwitch(admin: any, student: any) {
   const { user } = UseAuth();
-  if (user.role === "ADMIN") return admin;
+  // if (user.role === "ADMIN") return admin;
   return user.role === "ADMIN" ? admin : student;
 }
 

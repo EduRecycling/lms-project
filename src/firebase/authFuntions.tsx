@@ -46,6 +46,7 @@ export function UserAAuthContextProvider({ children }: PropsType) {
     return signOut(auth);
   }
   function googleSignIn() {
+    console.log('in signin')
     setLoading(true);
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
