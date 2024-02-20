@@ -5,16 +5,14 @@ import "./index.css";
 import "animate.css";
 import ThemeContextProvider from "./context/ThemeContext.tsx";
 import UserAAuthContextProvider, {
-  ChangeOccur,
+  // ChangeOccur,
 } from "./firebase/authFuntions.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeContextProvider>
       <UserAAuthContextProvider>
-        <ChangeOccur>
-          <App />
-        </ChangeOccur>
+        <App />
       </UserAAuthContextProvider>
     </ThemeContextProvider>
   </React.StrictMode>

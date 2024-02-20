@@ -12,8 +12,9 @@ import {
 import { useContext, useEffect, useState } from "react";
 import { Nav } from "./style";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
+import { UseAuth } from "../../../firebase/authFuntions";
 
 const Navbar = () => {
   const [more, setMore] = useState(false);
@@ -21,7 +22,9 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [veil, setVeil] = useState(false);
 
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext) as ThemeContextType;
+  const { logOut } = UseAuth();
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
@@ -155,15 +158,18 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        to="/logout"
+                      <button
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
+                        onClick={() => {
+                          logOut();
+                          navigate("/login");
+                        }}
                       >
                         <span className="icon">
                           <AiOutlineLogout />
                         </span>
                         logout
-                      </NavLink>
+                      </button>
                     </li>
                   </ul>
                 </div>

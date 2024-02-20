@@ -29,7 +29,7 @@ export const UserAuthContext = React.createContext<AuthContextType | null>(
   null
 );
 
-export function UserAAuthContextProvider({ children }: PropsType) {
+export default function UserAAuthContextProvider({ children }: PropsType) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -39,10 +39,13 @@ export function UserAAuthContextProvider({ children }: PropsType) {
       setUser(currentuser);
     });
 
+    console.log("object");
+
     return () => {
       unsubscribe();
     };
   }, []);
+
   function logIn(email: string, password: string) {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -55,18 +58,11 @@ export function UserAAuthContextProvider({ children }: PropsType) {
     setLoading(true);
     return signOut(auth);
   }
-  const googleSignIn = async () => {
+
+  function googleSignIn() {
     const googleAuthProvider = new GoogleAuthProvider();
-    setLoading(true);
-    try {
-      const signIn = await signInWithPopup(auth, googleAuthProvider);
-      setLoading(false);
-      return signIn;
-    } catch (error) {
-      setLoading(false);
-      throw error;
-    }
-  };
+    return signInWithPopup(auth, googleAuthProvider);
+  }
 
   return (
     <UserAuthContext.Provider
@@ -86,7 +82,7 @@ export function UserAAuthContextProvider({ children }: PropsType) {
   );
 }
 
-export default class UserAuthContextProvider extends React.Component<PropsType> {
+export class UserAuthContextProvider extends React.Component<PropsType> {
   state = {
     user: null,
     loading: false,

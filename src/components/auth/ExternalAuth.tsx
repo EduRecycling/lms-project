@@ -1,43 +1,27 @@
 // import { FaSquareFacebook } from "react-icons/fa6";
-// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { useEffect } from "react";
 import { UseAuth } from "../../firebase/authFuntions";
-// import { auth } from "../../firebase/config";
+import { useNavigate } from "react-router-dom";
 
 export default function ExternalAuth() {
-  const { googleSignIn, logIn } = UseAuth();
-  useEffect(() => {
-    console.log(googleSignIn);
-    console.log(logIn);
-  }, []);
+  const { googleSignIn } = UseAuth();
 
-  const signInWithGoogle = async () => {
+  const navigate = useNavigate();
+
+  const handleGoogleSignIn = async (e: any) => {
+    e.preventDefault();
     try {
-      console.log("clicked");
-      console.log(googleSignIn);
-      const result = await googleSignIn().then(() =>
-        console.log("already called")
-      );
-
-      console.log(result);
-    } catch (err) {
-      console.error(err);
+      await googleSignIn();
+      navigate("/dashboard");
+    } catch (error: any) {
+      console.log(error.message);
     }
   };
-  // async function googleSignIn() {
-  //   console.log("in signin");
-  //   // setLoading(true);
-  //   const googleAuthProvider = new GoogleAuthProvider();
-  //   const sign = await signInWithPopup(auth, googleAuthProvider);
-  //   console.log(sign);
-  //   return;
-  // }
 
   return (
     <div>
-      <div
+      <button
         className="flex items-center justify-center  border-none w-full rounded-full p-4 mt-8 text-white font-[roboto] text-base shadow-custom bg-Primary_10 hover:bg-primary-20 "
-        onClick={() => signInWithGoogle()}
+        onClick={handleGoogleSignIn}
       >
         <p className="">Sign In with Google</p>{" "}
         <img
@@ -45,12 +29,7 @@ export default function ExternalAuth() {
           alt="google"
           className="object-contain ml-3"
         />
-      </div>
-      <button onClick={() => signInWithGoogle()}>click me</button>
-      {/* <div className="flex items-center justify-center border-none w-full rounded-full p-4 mt-8  font-[roboto] text-base shadow-custom bg-white">
-        <p className="">Sign Up with Facebook</p>
-        <FaSquareFacebook className="text-blue-800 ml-3 text-2xl" />
-      </div> */}
+      </button>
     </div>
   );
 }
