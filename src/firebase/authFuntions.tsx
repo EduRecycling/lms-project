@@ -33,6 +33,16 @@ export function UserAAuthContextProvider({ children }: PropsType) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentuser: any) => {
+      setLoading(false);
+      setUser(currentuser);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   function logIn(email: string, password: string) {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -45,23 +55,18 @@ export function UserAAuthContextProvider({ children }: PropsType) {
     setLoading(true);
     return signOut(auth);
   }
-  function googleSignIn() {
-    console.log('in signin')
-    setLoading(true);
+  const googleSignIn = async () => {
     const googleAuthProvider = new GoogleAuthProvider();
-    return signInWithPopup(auth, googleAuthProvider);
-  }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentuser: any) => {
+    setLoading(true);
+    try {
+      const signIn = await signInWithPopup(auth, googleAuthProvider);
       setLoading(false);
-      setUser(currentuser);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+      return signIn;
+    } catch (error) {
+      setLoading(false);
+      throw error;
+    }
+  };
 
   return (
     <UserAuthContext.Provider

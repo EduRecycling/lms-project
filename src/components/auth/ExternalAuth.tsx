@@ -1,12 +1,20 @@
 // import { FaSquareFacebook } from "react-icons/fa6";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useEffect } from "react";
 import { UseAuth } from "../../firebase/authFuntions";
+// import { auth } from "../../firebase/config";
 
 export default function ExternalAuth() {
-  const { googleSignIn } = UseAuth();
+  const { googleSignIn, logIn } = UseAuth();
+  useEffect(() => {
+    console.log(googleSignIn);
+    console.log(logIn);
+  }, []);
 
   const signInWithGoogle = async () => {
     try {
       console.log("clicked");
+      console.log(googleSignIn);
       const result = await googleSignIn().then(() =>
         console.log("already called")
       );
@@ -16,6 +24,14 @@ export default function ExternalAuth() {
       console.error(err);
     }
   };
+  // async function googleSignIn() {
+  //   console.log("in signin");
+  //   // setLoading(true);
+  //   const googleAuthProvider = new GoogleAuthProvider();
+  //   const sign = await signInWithPopup(auth, googleAuthProvider);
+  //   console.log(sign);
+  //   return;
+  // }
 
   return (
     <div>
