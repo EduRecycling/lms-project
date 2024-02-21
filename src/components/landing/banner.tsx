@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Bend, Heading } from "./style";
+import { FaCamera } from "react-icons/fa6";
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -15,14 +16,25 @@ const Banner = () => {
             Effective waste management is one of the ways we can maintain a
             sustainable environment
           </p>
-          <button
-            className="get-started bg-primary-90 hover:bg-primary-80 text-[#082100] p-[2em] py-3 font-semibold w-fit rounded-[4px]"
-            onClick={() => {
-              navigate("outline");
-            }}
-          >
-            Get Started Now!
-          </button>
+          <div className="flex flex-wrap gap-3">
+            <button
+              className="get-started bg-primary-90 hover:bg-primary-80 text-[#082100] p-[2em] py-3 font-semibold w-fit rounded-[4px]"
+              onClick={() => {
+                navigate("/dashboard");
+              }}
+            >
+              Get Started Now!
+            </button>
+            <button
+              className="flex gap-1 items-center bg-primary-60 text-[#fff] hover:bg-primary-80 text-[#082100] p-2 px-5 py-3 font-semibold w-fit rounded-[4px]"
+              onClick={() => {
+                navigate("/scanner");
+              }}
+            >
+              <span>Scan</span>
+              <FaCamera />
+            </button>
+          </div>
         </div>
         <div className="diagram w-[90%] overflow-hidden animate__animated animate__slideInRight animate__delay wow">
           <img src="/images/banner-img.png" alt="..." className="w-full" />

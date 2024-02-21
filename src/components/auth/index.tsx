@@ -13,7 +13,7 @@ export default function Auth() {
   const { user } = UseAuth();
 
   if (user) {
-    navigate("/dashboard");
+    return navigate("/dashboard");
   }
 
   return (

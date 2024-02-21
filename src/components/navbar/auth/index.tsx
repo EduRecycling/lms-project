@@ -100,7 +100,7 @@ const Navbar = () => {
                   className="profile-btn p-[0.38rem] rounded-[2.375rem]"
                 >
                   <span className="dit flex items-center gap-[0.75rem]">
-                    <div className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden">
+                    <div className="icon w-[2.575rem] h-[2.575rem] bg-Primary_10 rounded-[50%] overflow-hidden">
                       <img
                         src={user.photoURL}
                         className="w-full h-full object-cover"
@@ -196,7 +196,7 @@ const Navbar = () => {
               }}
             >
               <div
-                className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden"
+                className="icon w-[2.575rem] h-[2.575rem] bg-Primary_10 rounded-[50%] overflow-hidden"
                 style={{
                   border: "0px solid blue",
                 }}

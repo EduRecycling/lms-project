@@ -19,7 +19,7 @@ export default function ExternalAuth() {
 
   return (
     <div>
-      <div className="row flex gap-1 text-2xl">
+      <div className="row flex gap-1 text-xl">
         <input type="checkbox" name="rol" id="rol" />
         <label htmlFor="role">Admin</label>
       </div>

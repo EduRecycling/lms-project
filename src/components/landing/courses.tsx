@@ -1,10 +1,11 @@
-import { Bend, CustomScroll } from "./style";
+// import { Bend, CustomScroll } from "./style";
 import { FaMoneyBill } from "react-icons/fa6";
 import { IoMdCalendar } from "react-icons/io";
-import Goto from "./Goto";
+// import Goto from "./Goto";
 import courses from "../../data/courses";
 import { CourseType } from "../../../type";
 import { useNavigate } from "react-router-dom";
+import { Bend } from "./style";
 
 const Courses = () => {
   return (
@@ -17,14 +18,14 @@ const Courses = () => {
           </h3>
         </div>
         <div className="voke overflow-x-hidden relative w-full">
-          <Goto />
-          <CustomScroll className="scroll-box overflow-x-auto pb-4">
+          {/* <Goto /> */}
+          <div className="scroll-box overflow-x-auto pb-4">
             <div className="let sub flex gap-5">
               {courses.map((course) => {
                 return <Course course={course} key={course.id} />;
               })}
             </div>
-          </CustomScroll>
+          </div>
         </div>
       </Bend>
     </div>
