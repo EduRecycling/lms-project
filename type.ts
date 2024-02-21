@@ -48,11 +48,6 @@ export type Module = {
   article?: string;
   references: Reference[];
   tests?: Test[];
-  id: string | number;
-  sn: string | number;
-  locked?: boolean;
-  objectives: ObjectiveType[];
-  lessons: LessonType[];
 };
 
 export type ObjectiveType = {
@@ -95,16 +90,20 @@ export type CourseType = {
   };
   enrolled: number;
   language: string[];
-  modules: Module[];
+  modules: ModuleType[];
 };
 
 export type ModuleType = {
+ title: string;
+  description: string;
+  image: File | null;
+  type: string;
+  file?: File | null;
+  article?: string;
+  references: Reference[];
+  tests?: Test[];
   id: string | number;
   sn: string | number;
   locked?: boolean;
-  title: string;
-  objectives: {
-    title: string;
-    markup: string;
-  }[];
+  objectives: ObjectiveType;
 };
