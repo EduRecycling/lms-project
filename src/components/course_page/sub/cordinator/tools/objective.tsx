@@ -1,8 +1,8 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Heading } from "../../../../landing/style";
-import { ObjectiveType } from "../../../../../../type";
+import { LessonType } from "../../../../../../type";
 
-const Objective = ({ objectives }: { objectives: ObjectiveType[] }) => {
+const Objective = ({ lessons }: { lessons: LessonType[] }) => {
   return (
     <div className="objective w-full p-5">
       <div className="inner flex flex-col gap-3">
@@ -17,7 +17,7 @@ const Objective = ({ objectives }: { objectives: ObjectiveType[] }) => {
           }}
         >
           <ul className="flex gap-2 flex-col">
-            {objectives.map((obj, index) => {
+            {lessons.map((obj, index) => {
               return (
                 <li className="flex items-center gap-2" key={index}>
                   <span className="icon">

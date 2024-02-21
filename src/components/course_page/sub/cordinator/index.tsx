@@ -40,7 +40,7 @@ const Cordinator = ({ module }: { module: Module }) => {
         <TopTab />
       </div>
       <div className="inner min-h-full h-full flex flex-col max-w-[1020px] m-auto w-full min-w-[280px] overflow-x-auto">
-        {slide === 0 && <Objective objectives={module.objectives} />}
+        {slide === 0 && <Objective lessons={module.lessons} />}
         {module.lessons.map((obj) => {
           return String(slide) === String(obj.id) ? Vies(obj) : "";
         })}
