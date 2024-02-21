@@ -13,7 +13,7 @@ export default function ExternalAuth() {
   const { routePage } = useContext(ThemeContext) as ThemeContextType;
   const navigate = useNavigate();
 
-   const handleGoogleSignIn = async (e: any) => {
+  const handleGoogleSignIn = async (e: any) => {
     e.preventDefault();
     try {
       const result = await googleSignIn();
@@ -23,6 +23,7 @@ export default function ExternalAuth() {
     } catch (err) {
       console.error(err);
     }
+  };
 
   // const handleGoogleSignIn = async (e: any) => {
   //   e.preventDefault();
