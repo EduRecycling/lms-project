@@ -21,8 +21,10 @@ export default function Auth() {
     return;
   });
 
+  
+
   return (
-    !user && (
+    !user ? (
       <section className="px-[5%] py-[2%] h-full bg-background">
         <button
           onClick={() => {
@@ -46,6 +48,6 @@ export default function Auth() {
         <div className="mt-[10%]" />
         <Footer />
       </section>
-    )
+    ):null
   );
 }

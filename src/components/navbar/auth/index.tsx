@@ -158,10 +158,10 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <button
+                      <button 
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
-                        onClick={() => {
-                          logOut();
+                        onClick={async () => {
+                          await logOut();
                           navigate("/login");
                         }}
                       >

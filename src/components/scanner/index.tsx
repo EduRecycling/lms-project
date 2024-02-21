@@ -19,7 +19,6 @@ const ObjectDetection: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true); // Initial loading state
   const [error, setError] = useState<any>(); // Error state for handling issues
 
- 
   useEffect(() => {
     const loadModel = async () => {
       try {
@@ -69,7 +68,8 @@ const ObjectDetection: React.FC = () => {
       // const prompt = "what is a dictionary?";
 
       const result = await model.generateContent(prompt);
-      const response = await result.response;
+      const response = result.response;
+      console.log(response);
       const text = response.text();
       console.log(text);
       setMessage(text);
@@ -121,15 +121,14 @@ const ObjectDetection: React.FC = () => {
       console.log(scan);
     }
   };
- useEffect(() => {
-   if (scan) {
-     console.log("Scan is true");
-     detectObjects()
-     .then(() => setdisplay((prevScan) => !prevScan));
-     setdisplay(true)
-     // Perform any necessary actions when scan is true
-   }
- }, [scan, detectObjects]);
+  useEffect(() => {
+    if (scan) {
+      console.log("Scan is true");
+      detectObjects().then(() => setdisplay((prevScan) => !prevScan));
+      setdisplay(true);
+      // Perform any necessary actions when scan is true
+    }
+  }, [scan, detectObjects]);
   const capture = () => {
     console.log("clicked");
     setScan(true);
