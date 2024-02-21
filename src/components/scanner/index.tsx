@@ -6,7 +6,8 @@ import { FaSearch } from "react-icons/fa";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import Course from "../course_page/layout";
+// import Course from "../course_page/layout";
+import Navbar from "../navbar";
 
 const ObjectDetection: React.FC = () => {
   const webcamRef = useRef<any>(null);
@@ -140,92 +141,91 @@ const ObjectDetection: React.FC = () => {
   };
 
   return (
-    <Course>
-      <>
-        <div className="px-[5%] lg:px-[10%] min-h-[100vh]">
-          <div className="w-full">
-            <div className="flex justify-center mt-6">
-              <div>
-                {isLoading && (
-                  <div className="h-[480px] w-[640px] flex justify-center items-center bg-Primary_30">
-                    {/* Your loading spinner or placeholder content here */}
-                    <p className="font-[roboto] font-semibold text-white">
-                      Preparing webcam...
+    <>
+      <Navbar />
+      <div className="px-[5%] lg:px-[10%] min-h-[100vh]">
+        <div className="w-full">
+          <div className="flex justify-center mt-6">
+            <div>
+              {isLoading && (
+                <div className="h-[480px] w-[640px] flex justify-center items-center bg-Primary_30">
+                  {/* Your loading spinner or placeholder content here */}
+                  <p className="font-[roboto] font-semibold text-white">
+                    Preparing webcam...
+                  </p>
+                </div>
+              )}
+              {error && (
+                <div className="h-[480px] w-[640px] flex justify-center items-center bg-Primary_30">
+                  <div>
+                    {/* Display error message and potential retry button */}
+                    <p className="text-[#d00] font-[roboto] font-semibold text-center">
+                      An error occurred <br /> Error: {error.message}
                     </p>
+                    <button
+                      onClick={() => {
+                        setError(null);
+                        setIsLoading(true);
+                      }}
+                      className="bg-white px-8 py-2 my-6 text-primary-20 font-[roboto] font-semibold "
+                    >
+                      Retry
+                    </button>
                   </div>
-                )}
-                {error && (
-                  <div className="h-[480px] w-[640px] flex justify-center items-center bg-Primary_30">
-                    <div>
-                      {/* Display error message and potential retry button */}
-                      <p className="text-[#d00] font-[roboto] font-semibold text-center">
-                        An error occurred <br /> Error: {error.message}
-                      </p>
-                      <button
-                        onClick={() => {
-                          setError(null);
-                          setIsLoading(true);
-                        }}
-                        className="bg-white px-8 py-2 my-6 text-primary-20 font-[roboto] font-semibold "
-                      >
-                        Retry
-                      </button>
-                    </div>
-                  </div>
-                )}
-                {!isLoading && !error && (
-                  <Webcam
-                    audio={false}
-                    ref={webcamRef}
-                    screenshotFormat="image/jpeg"
-                    videoConstraints={{
-                      width: 640,
-                      height: 480,
-                      facingMode: "environment",
-                    }}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="flex justify-center mt-4">
-              <button
-                onClick={() => {
-                  capture();
-                }}
-                disabled={isLoading || error || scan}
-                className="transition-opacity bg-primary-10 cursor-pointer text-white disabled:bg-Primary_90 p-3 w-1/2 hover:bg-primary-20"
-              >
-                Scan
-              </button>
+                </div>
+              )}
+              {!isLoading && !error && (
+                <Webcam
+                  audio={false}
+                  ref={webcamRef}
+                  screenshotFormat="image/jpeg"
+                  videoConstraints={{
+                    width: 640,
+                    height: 480,
+                    facingMode: "environment",
+                  }}
+                />
+              )}
             </div>
           </div>
-          {message && (
-            <Markdown
-              remarkPlugins={[remarkGfm]}
-              className={"font-[roboto] font-medium my-6"}
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => {
+                capture();
+              }}
+              disabled={isLoading || error || scan}
+              className="transition-opacity bg-primary-10 cursor-pointer text-white disabled:bg-Primary_90 p-3 w-1/2 hover:bg-primary-20"
             >
-              {message}
-            </Markdown>
-          )}
-          <div>
-            {predictions.map((prediction, index) => (
-              <div key={index} className="font-[roboto] font-medium">
-                {`Object Predicted: ${prediction.class}`}
-                {/* {`Object Predicted: ${prediction.class},
+              Scan
+            </button>
+          </div>
+        </div>
+        {message && (
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            className={"font-[roboto] font-medium my-6"}
+          >
+            {message}
+          </Markdown>
+        )}
+        <div>
+          {predictions.map((prediction, index) => (
+            <div key={index} className="font-[roboto] font-medium">
+              {`Object Predicted: ${prediction.class}`}
+              {/* {`Object Predicted: ${prediction.class},
                Score: ${Math.round(
                 prediction.score * 100
               )}%`} */}
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
-        {display && (
-          <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#000000de]">
-            <FaSearch className="animate__animated animate__infinite animate__pulse text-white text-9xl" />
-          </div>
-        )}
-      </>
-    </Course>
+      </div>
+      {display && (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[#000000de]">
+          <FaSearch className="animate__animated animate__infinite animate__pulse text-white text-9xl" />
+        </div>
+      )}
+    </>
   );
 };
 

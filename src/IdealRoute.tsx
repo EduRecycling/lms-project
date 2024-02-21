@@ -138,9 +138,9 @@ function RoleSwitch({
   Admin: React.ComponentType<any>;
   Student: React.ComponentType<any>;
 }) {
-  const { user } = UseAuth();
+  const { isAuth, user } = UseAuth();
 
-  if (!user) {
+  if (!isAuth) {
     return <Navigate to="/login" />;
   }
 
@@ -152,9 +152,9 @@ function RoleSwitch({
 }
 
 function PrivateRoute({ children }: { children: ReactElement }) {
-  const { user } = UseAuth();
+  const { isAuth } = UseAuth();
 
-  if (!user) {
+  if (!isAuth) {
     return <Navigate to="/login" />;
   }
   return children;

@@ -11,9 +11,9 @@ import NotFound from "../../pages/notFound";
 export default function Auth() {
   const myFormRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const { user } = UseAuth();
+  const { isAuth } = UseAuth();
 
-  if (user) {
+  if (isAuth) {
     return <NotFound />;
   }
 

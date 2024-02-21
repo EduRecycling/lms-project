@@ -62,6 +62,7 @@ export default function UserAAuthContextProvider({ children }: PropsType) {
   }
   function logOut() {
     setLoading(true);
+    cookies.remove("auth-token");
     return signOut(auth);
   }
 

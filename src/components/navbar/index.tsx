@@ -10,14 +10,14 @@ import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logOut } = UseAuth();
+  const { isAuth, logOut } = UseAuth();
   const navigate = useNavigate();
   const { setRoutePage } = useContext(ThemeContext) as ThemeContextType;
 
   const handleSignOut = async () => {
     await logOut()
       .then(() => {
-        console.log("User logged out successfully");
+        console.log("isAuth logged out successfully");
         navigate("/login"); // Redirect to the login page after logout
       })
       .catch((error: any) => console.error(error));
@@ -44,7 +44,7 @@ const Navbar = () => {
       </NavLink>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
-          {user && (
+          {isAuth && (
             <li className="font-semibold text-lg hover:font-bold px-3 py-1 hover:text-[##EDEFE8]">
               <NavLink
                 onClick={() => {
@@ -87,7 +87,7 @@ const Navbar = () => {
               Need Help?
             </NavLink>
           </li>
-          {user ? (
+          {isAuth ? (
             <button
               className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
               onClick={handleSignOut}
@@ -99,7 +99,7 @@ const Navbar = () => {
               <NavLink to="/Login">Login</NavLink>
             </li>
           )}
-          {!user && (
+          {!isAuth && (
             <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
               <button
                 onClick={() => navigate("/dashboard")}

@@ -34,8 +34,6 @@ const Navbar = () => {
     // return disableBodyScroll(document.body);
   });
 
-  console.log(user);
-
   const handleSignOut = async () => {
     await logOut()
       .then(() => {
@@ -120,9 +118,13 @@ const Navbar = () => {
                   <span className="dit flex items-center gap-[0.75rem]">
                     <div className="icon w-[2.575rem] h-[2.575rem] bg-Primary_10 rounded-[50%] overflow-hidden">
                       <img
-                        src={user.photoURL}
+                        src={
+                          user.photoURL ? user.photoURL : "/images/profile.png"
+                        }
                         className="w-full h-full object-cover"
-                        alt={user.photoURL}
+                        alt={
+                          user.photoURL ? user.photoURL : "/images/profile.png"
+                        }
                       />
                     </div>
                     <div className="p flex gap-[0.8rem] items-center">
@@ -192,7 +194,7 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <button 
+                      <button
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                         onClick={handleSignOut}
                       >
@@ -220,9 +222,9 @@ const Navbar = () => {
                 }}
               >
                 <img
-                  src={user.photoURL}
+                  src={user.photoURL ? user?.photoURL : "/images/profile.png"}
                   className="w-full h-full object-cover"
-                  alt={user.photoURL}
+                  alt={user.photoURL ? user?.photoURL : "/images/profile.png"}
                 />
               </div>
             </button>
