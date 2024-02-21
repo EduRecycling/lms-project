@@ -43,11 +43,23 @@ export type Module = {
   title: string;
   description: string;
   image: File | null;
-  type: "video" | "article";
+  type: string;
   file?: File | null;
   article?: string;
   references: Reference[];
   tests?: Test[];
+};
+
+export type ObjectiveType = {
+  title: string;
+  markup: string;
+};
+
+export type LessonType = {
+  id: string | number;
+  type: string;
+  title: string;
+  markup: string;
 };
 
 export type Reference = {
@@ -60,4 +72,39 @@ export type Test = {
   options: string[];
   correctAnswer: string;
   references?: Reference[];
+};
+
+export type CourseType = {
+  id: string;
+  title: string;
+  description: string;
+  about: string[];
+  image: string;
+  objectives: string[];
+  duration: string;
+  type: string;
+  price: string;
+  locked?: boolean;
+  certificate: {
+    link: string;
+  };
+  enrolled: number;
+  language: string[];
+  modules: ModuleType[];
+};
+
+export type ModuleType = {
+ title: string;
+  description: string;
+  image: File | null;
+  type: string;
+  file?: File | null;
+  article?: string;
+  references: Reference[];
+  tests?: Test[];
+  id: string | number;
+  sn: string | number;
+  locked?: boolean;
+  objectives: ObjectiveType[];
+lessons: LessonType[];
 };

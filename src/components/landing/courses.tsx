@@ -1,44 +1,11 @@
-import { Bend, CustomScroll } from "./style";
+// import { Bend, CustomScroll } from "./style";
 import { FaMoneyBill } from "react-icons/fa6";
 import { IoMdCalendar } from "react-icons/io";
-import Goto from "./Goto";
-
-interface CourseType {
-  id: string;
-  title: string;
-  description: string;
-  price: string | undefined | null;
-  link: string;
-  image: string;
-}
-
-const data = [
-  {
-    id: "1",
-    title: "Community Recyling",
-    description: `Recycling programs promote community engagement and collaboration. They bring residents together, fostering a sense of unity and shared knowledge.`,
-    price: null,
-    link: "",
-    image: "/images/courses/community.png",
-  },
-  {
-    id: "2",
-    title: "Kids Recylying",
-    description: `Taking care of the planet isn't just for Earth Day! Read on to learn about how to teach your children what it is to make a difference every day by reducing, reusing, and recycling!`,
-    price: null,
-    link: "",
-    image: "/images/courses/kid.png",
-  },
-
-  {
-    id: "3",
-    title: "Resource Recylying",
-    description: `Resource recycling reduces the amount of waste discharged into the global environment. The waste reduction achieved by thorough recycling is substantial.`,
-    price: null,
-    link: "",
-    image: "/images/courses/resource.png",
-  },
-];
+// import Goto from "./Goto";
+import courses from "../../data/courses";
+import { CourseType } from "../../../type";
+import { useNavigate } from "react-router-dom";
+import { Bend } from "./style";
 
 const Courses = () => {
   return (
@@ -51,14 +18,14 @@ const Courses = () => {
           </h3>
         </div>
         <div className="voke overflow-x-hidden relative w-full">
-          <Goto />
-          <CustomScroll className="scroll-box overflow-x-auto pb-4">
+          {/* <Goto /> */}
+          <div className="scroll-box overflow-x-auto pb-4">
             <div className="let sub flex gap-5">
-              {data.map((course: CourseType) => {
+              {courses.map((course) => {
                 return <Course course={course} key={course.id} />;
               })}
             </div>
-          </CustomScroll>
+          </div>
         </div>
       </Bend>
     </div>
@@ -68,8 +35,15 @@ const Courses = () => {
 export default Courses;
 
 const Course = ({ course }: { course: CourseType }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="course-modal flex flex-col bg-white text-secondary-10 w-[calc(280px + 5vmin)] min-w-[290px] max-w-[340px] text-black p-4 rounded-lg gap-3 animate__animated animate__fadeInRight wow">
+    <div
+      className="course-modal flex flex-col bg-white text-secondary-10 w-[calc(280px + 5vmin)] cursor-pointer min-w-[290px] max-w-[340px] text-black p-4 rounded-lg gap-3 animate__animated animate__fadeInRight wow"
+      onClick={() => {
+        navigate(`/course/${course.id}`);
+      }}
+    >
       <div className="img-box w-full h-[280px] rounded-md bg-secondary-50 overflow-hidden">
         <img
           src={course.image}
@@ -89,9 +63,7 @@ const Course = ({ course }: { course: CourseType }) => {
             <span>
               <FaMoneyBill />
             </span>
-            <span className="font-semibold">
-              {course.price ? course.price : "Free"}
-            </span>
+            <span className="font-semibold">{course.price}</span>
           </div>
           <div className="direct-to">
             <span>

@@ -1,12 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FaBars, FaX } from "react-icons/fa6";
 import { Iconic } from "../landing/style";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Nav } from "./style";
+import { UseAuth } from "../../firebase/authFuntions";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = UseAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await logOut()
+      .then(() => {
+        console.log("User logged out successfully");
+        navigate("/login"); // Redirect to the login page after logout
+      })
+      .catch((error: any) => console.error(error));
+  };
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
@@ -24,6 +37,13 @@ const Navbar = () => {
       </NavLink>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
+          {user && (
+            <li className="font-semibold text-lg hover:font-bold px-3 py-1 hover:text-[##EDEFE8]">
+              <NavLink to="/dashboard" className="nav-link">
+                Dashboard
+              </NavLink>
+            </li>
+          )}
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
             <NavLink to="/About">About Us</NavLink>
           </li>
@@ -33,14 +53,28 @@ const Navbar = () => {
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
             <NavLink to="/Help">Need Help?</NavLink>
           </li>
-          <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <NavLink to="/Login">Login</NavLink>
-          </li>
-          <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <button className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30">
-              Get Started
+          {user ? (
+            <button
+              className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
+              onClick={handleSignOut}
+            >
+              Logout
             </button>
-          </li>
+          ) : (
+            <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
+              <NavLink to="/Login">Login</NavLink>
+            </li>
+          )}
+          {!user && (
+            <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
+              >
+                Get Started
+              </button>
+            </li>
+          )}
         </ul>
       </div>
       <button

@@ -1,7 +1,8 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Heading } from "../../../../landing/style";
+import { LessonType } from "../../../../../../type";
 
-const Objective = () => {
+const Objective = ({ lessons }: { lessons: LessonType[] }) => {
   return (
     <div className="objective w-full p-5">
       <div className="inner flex flex-col gap-3">
@@ -16,13 +17,13 @@ const Objective = () => {
           }}
         >
           <ul className="flex gap-2 flex-col">
-            {objectives.map((obj, index) => {
+            {lessons.map((obj, index) => {
               return (
                 <li className="flex items-center gap-2" key={index}>
                   <span className="icon">
                     <FaCheckCircle />
                   </span>
-                  <span>{obj}</span>
+                  <span>{obj.title}</span>
                 </li>
               );
             })}
@@ -32,15 +33,5 @@ const Objective = () => {
     </div>
   );
 };
-
-const objectives = [
-  "What is negotiation",
-  "Who is an Effective Negotiator?",
-  "Why do we Negotiation",
-  "Charateristics of Negotiation",
-  "The Benefits of Negotiation",
-  "The Types of Negotiation",
-  "Skills for Negotiation",
-];
 
 export default Objective;

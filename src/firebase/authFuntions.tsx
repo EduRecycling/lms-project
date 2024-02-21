@@ -82,59 +82,59 @@ export default function UserAAuthContextProvider({ children }: PropsType) {
   );
 }
 
-export class UserAuthContextProvider extends React.Component<PropsType> {
-  state = {
-    user: null,
-    loading: false,
-  };
+// export class UserAuthContextProvider extends React.Component<PropsType> {
+//   state = {
+//     user: null,
+//     loading: false,
+//   };
 
-  logIn = (email: string, password: string) => {
-    this.setState({ loading: true });
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+//   logIn = (email: string, password: string) => {
+//     this.setState({ loading: true });
+//     return signInWithEmailAndPassword(auth, email, password);
+//   };
 
-  signUp = (email: string, password: string) => {
-    this.setState({ loading: true });
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+//   signUp = (email: string, password: string) => {
+//     this.setState({ loading: true });
+//     return createUserWithEmailAndPassword(auth, email, password);
+//   };
 
-  logOut = () => {
-    this.setState({ loading: true });
-    return signOut(auth);
-  };
+//   logOut = () => {
+//     this.setState({ loading: true });
+//     return signOut(auth);
+//   };
 
-  googleSignIn = () => {
-    const googleAuthProvider = new GoogleAuthProvider();
-    this.setState({ loading: true });
-    return signInWithPopup(auth, googleAuthProvider);
-  };
+//   googleSignIn = () => {
+//     const googleAuthProvider = new GoogleAuthProvider();
+//     this.setState({ loading: true });
+//     return signInWithPopup(auth, googleAuthProvider);
+//   };
 
-  setLoading = (bool: boolean) => {
-    this.setState({ loading: bool });
-  };
+//   setLoading = (bool: boolean) => {
+//     this.setState({ loading: bool });
+//   };
 
-  setUser = (data: object | null) => {
-    this.setState({ user: data });
-  };
+//   setUser = (data: object | null) => {
+//     this.setState({ user: data });
+//   };
 
-  render(): any {
-    return (
-      <UserAuthContext.Provider
-        value={{
-          ...this.state,
-          logIn: this.logIn,
-          signUp: this.signUp,
-          logOut: this.logOut,
-          googleSignIn: this.googleSignIn,
-          setUser: this.setUser,
-          setLoading: this.setLoading,
-        }}
-      >
-        {this.props.children}
-      </UserAuthContext.Provider>
-    );
-  }
-}
+//   render(): any {
+//     return (
+//       <UserAuthContext.Provider
+//         value={{
+//           ...this.state,
+//           logIn: this.logIn,
+//           signUp: this.signUp,
+//           logOut: this.logOut,
+//           googleSignIn: this.googleSignIn,
+//           setUser: this.setUser,
+//           setLoading: this.setLoading,
+//         }}
+//       >
+//         {this.props.children}
+//       </UserAuthContext.Provider>
+//     );
+//   }
+// }
 
 type ChangeOccurType = {
   children: React.ReactNode;

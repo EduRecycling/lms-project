@@ -1,9 +1,11 @@
 import { Heading } from "../../landing/style";
 import { ThemeContext, ThemeContextType } from "../../../context/ThemeContext";
 import { useContext } from "react";
+import { UseAuth } from "../../../firebase/authFuntions";
 
 const Welcome = () => {
   const { theme } = useContext(ThemeContext) as ThemeContextType;
+  const { user } = UseAuth();
 
   return (
     <div className="welcome flex gap-4 flex-col">
@@ -13,7 +15,7 @@ const Welcome = () => {
           borderBottom: `2px solid ${theme !== "dark" ? "#252323" : "#332e2e"}`,
         }}
       >
-        <Heading.h2>Welcome Back Oluwatomi</Heading.h2>
+        <Heading.h2>Welcome Back {user.displayName.split(" ")[0]}</Heading.h2>
         <p>Learn on the go from the best learning resource</p>
       </div>
       <div className="stat">

@@ -5,31 +5,31 @@ import { BiBook, BiCheckSquare, BiMinus } from "react-icons/bi";
 
 import { useState } from "react";
 import { BsClock } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { CourseType, ModuleType } from "../../../../type";
 
-const Outline = () => {
+const Outline = ({ course }: { course: CourseType }) => {
   const [view, setView] = useState(undefined);
   const [isLesson, setIsLesson] = useState(true);
+
+  const navigate = useNavigate();
 
   return (
     <div className="Outline flex flex-col gap-20">
       <div className="top min-h-svh bg-Primary_90 p-20 flex gap-3 flex-col justify-center items-center">
         <div className="opt flex w-full">
-          <button className="back w-14 h-14 text-xl rounded-full bg-[#fff] grid place-content-center place-items-center hover:opacity-80">
+          <button
+            className="back w-14 h-14 text-xl rounded-full bg-[#fff] grid place-content-center place-items-center hover:opacity-80"
+            onClick={() => navigate(-1)}
+          >
             <FaArrowLeft />
           </button>
         </div>
         <div className="inner flex flex-col md:flex-row gap-14 justify-center w-full">
           <div className="if basis-[50%] flex flex-col gap-5 max-w-[740px]">
             <div className="header-t">
-              <Heading.h2 className="font-semibold">
-                The Art of Negotiation
-              </Heading.h2>
-              <p className="pt-2">
-                The skill of Negotiation can be a deciding factor between you
-                getting a contract, earning a higher paid salary, or settling
-                industry disputes. It is indeed an art that everyone needs to
-                excel in their chosen field.
-              </p>
+              <Heading.h2 className="font-semibold">{course.title}</Heading.h2>
+              <p className="pt-2">{course.description}</p>
             </div>
             <div
               className="opt-out"
@@ -48,7 +48,7 @@ const Outline = () => {
                   <span>Enrolled</span>
                 </div>
                 <div className="va">
-                  <span>1400</span>
+                  <span>{course.enrolled}</span>
                 </div>
               </div>
               <div
@@ -62,7 +62,7 @@ const Outline = () => {
                   <span>Duration</span>
                 </div>
                 <div className="va">
-                  <span>2 Weeks</span>
+                  <span>{course.duration}</span>
                 </div>
               </div>
               <div
@@ -76,14 +76,14 @@ const Outline = () => {
                   <span>Lessons</span>
                 </div>
                 <div className="va">
-                  <span>4</span>
+                  <span>{course.modules.length}</span>
                 </div>
               </div>
             </div>
           </div>
           <div className="media basis-[50%] bg-Primary_10 rounded-lg overflow-hidden max-w-[540px] max-h-[380px]">
             <img
-              src="/images/courses/resource.png"
+              src={course.image}
               className="w-full h-full object-contain"
               alt="..."
             />
@@ -119,8 +119,15 @@ const Outline = () => {
         <div className="div">
           {isLesson && (
             <div className="body-r p-10 flex gap-4 flex-col">
-              {lessons.map((lesson) => {
-                return <Line lesson={lesson} view={view} setView={setView} />;
+              {course.modules.map((lesson, index) => {
+                return (
+                  <Line
+                    lesson={lesson}
+                    view={view}
+                    setView={setView}
+                    key={index}
+                  />
+                );
               })}
             </div>
           )}
@@ -132,8 +139,8 @@ const Outline = () => {
               }}
             >
               <ul className="list-disc p-4 flex flex-col gap-1 text-xl">
-                {lessons.map((highline) => {
-                  return <li>{highline.title}</li>;
+                {course.modules.map((highline, index) => {
+                  return <li key={index}>{highline.title}</li>;
                 })}
               </ul>
             </div>
@@ -144,22 +151,16 @@ const Outline = () => {
   );
 };
 
-type LessonType = {
-  sn: string;
-  title: string;
-  locked: boolean;
-  outline: string[];
-};
-
 const Line = ({
   lesson,
   view,
   setView,
 }: {
-  lesson: LessonType;
+  lesson: ModuleType;
   view: object | undefined | null;
   setView: any;
 }) => {
+  const navigate = useNavigate();
   return (
     <div
       className={`line animated rounded-lg p-5 px-8 ${
@@ -178,8 +179,9 @@ const Line = ({
           borderBottom: "1px solid #000",
         }}
       >
-        <p className="b-t text-xl capitalize">
-          <span>{lesson.sn}.</span> {lesson.title}
+        <p className="b-t text-xl capitalize flex gap-1">
+          <span>{lesson.sn}.</span>
+          <span>{lesson.title}</span>
         </p>
         <div className="rit flex items-center gap-2">
           {lesson.locked ? (
@@ -187,7 +189,12 @@ const Line = ({
               Locked
             </button>
           ) : (
-            <button className="start bg-Primary_10 text-secondary-100 p-2 px-5 rounded-md font-semibold hover:opacity-80">
+            <button
+              className="start bg-Primary_10 text-secondary-100 p-2 px-5 rounded-md font-semibold hover:opacity-80"
+              onClick={() => {
+                navigate(`../lesson/${lesson.sn}`);
+              }}
+            >
               Start Lesson
             </button>
           )}
@@ -199,91 +206,12 @@ const Line = ({
       </div>
       <div className="more min-h-[120px]">
         <ul className="list list-disc p-4 flex flex-col gap-1">
-          {lesson.outline.map((l) => {
-            return <li>{l}</li>;
+          {lesson.objectives.map((l) => {
+            return <li>{l.title}</li>;
           })}
         </ul>
       </div>
     </div>
   );
 };
-
-const lessons = [
-  {
-    id: "1",
-    sn: "1",
-    title: "Introduction",
-    locked: false,
-    outline: [
-      "What is negotiation",
-      "Who is an Effective Negotiator?",
-      "Why do we Negotiation",
-      "Charateristics of Negotiation",
-      "The Benefits of Negotiation",
-      "The Types of Negotiation",
-      "Skills for Negotiation",
-    ],
-  },
-  {
-    id: "2",
-    sn: "2",
-    title: "Planning Your Negotiation",
-    locked: true,
-    outline: [
-      "What is negotiation",
-      "Who is an Effective Negotiator?",
-      "Why do we Negotiation",
-      "Charateristics of Negotiation",
-      "The Benefits of Negotiation",
-      "The Types of Negotiation",
-      "Skills for Negotiation",
-    ],
-  },
-  {
-    id: "3",
-    sn: "3",
-    title: "Importance of Negotiation",
-    locked: true,
-    outline: [
-      "What is negotiation",
-      "Who is an Effective Negotiator?",
-      "Why do we Negotiation",
-      "Charateristics of Negotiation",
-      "The Benefits of Negotiation",
-      "The Types of Negotiation",
-      "Skills for Negotiation",
-    ],
-  },
-  {
-    id: "4",
-    sn: "4",
-    title: "Test",
-    locked: true,
-    outline: [
-      "What is negotiation",
-      "Who is an Effective Negotiator?",
-      "Why do we Negotiation",
-      "Charateristics of Negotiation",
-      "The Benefits of Negotiation",
-      "The Types of Negotiation",
-      "Skills for Negotiation",
-    ],
-  },
-  {
-    id: "5",
-    sn: "5",
-    title: "Exam",
-    locked: true,
-    outline: [
-      "What is negotiation",
-      "Who is an Effective Negotiator?",
-      "Why do we Negotiation",
-      "Charateristics of Negotiation",
-      "The Benefits of Negotiation",
-      "The Types of Negotiation",
-      "Skills for Negotiation",
-    ],
-  },
-];
-
 export default Outline;

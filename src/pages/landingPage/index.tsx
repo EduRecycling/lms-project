@@ -6,7 +6,6 @@ import {
   Offering,
   Partners,
   Reason,
-  Testimonial,
 } from "../../components/landing";
 
 export default function LandingPage() {
@@ -19,7 +18,7 @@ export default function LandingPage() {
       <Offering />
       <Reason />
       <Courses />
-      <Testimonial />
+      {/* <Testimonial /> */}
       <Partners />
       <Footer />
     </div>
