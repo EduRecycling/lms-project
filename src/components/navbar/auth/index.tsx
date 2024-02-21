@@ -24,7 +24,7 @@ const Navbar = () => {
   const [veil, setVeil] = useState(false);
 
   const navigate = useNavigate();
-  const { theme } = useContext(ThemeContext) as ThemeContextType;
+  const { theme, setRoutePage } = useContext(ThemeContext) as ThemeContextType;
   const { logOut, user } = UseAuth();
 
   useEffect(() => {
@@ -67,17 +67,35 @@ const Navbar = () => {
         <div className={`nav-links ${isOpen && "show-links"} flex gap-10`}>
           <ul className={`main flex gap-[0.65rem] items-center`}>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/dashboard" className="nav-link">
+              <NavLink
+                onClick={() => {
+                  setRoutePage("/dashboard");
+                }}
+                to="/dashboard"
+                className="nav-link"
+              >
                 Dashboard
               </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/dashboard/explore" className="nav-link">
+              <NavLink
+                onClick={() => {
+                  setRoutePage("/dashboard/explore");
+                }}
+                to="/dashboard/explore"
+                className="nav-link"
+              >
                 Explore Courses
               </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/dashboard/notes" className="nav-link">
+              <NavLink
+                onClick={() => {
+                  setRoutePage("/dashboard/notes");
+                }}
+                to="/dashboard/notes"
+                className="nav-link"
+              >
                 Notes
               </NavLink>
             </li>
