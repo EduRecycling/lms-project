@@ -126,7 +126,8 @@ export const Nav = styled.div`
       justify-content: start;
       gap: 0;
 
-      overflow: auto;
+      overflow: hidden;
+      height: 0;
     }
 
     & .nav-links.show-links {
@@ -135,6 +136,8 @@ export const Nav = styled.div`
       opacity: 1;
 
       z-index: 1000;
+      overflow: auto;
+      height: 100svh;
     }
 
     & .nav-links ul.main {

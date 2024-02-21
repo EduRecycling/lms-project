@@ -1,13 +1,18 @@
 import { useNavigate } from "react-router";
-import { Footer, Navbar } from "../../components/landing";
+import { Footer } from "../../components/landing";
 import { Heading } from "../../components/landing/style";
+import { UseAuth } from "../../firebase/authFuntions";
+import ANavbar from "../../components/navbar/auth";
+import Navbar from "../../components/navbar";
 
 const NotFound = () => {
   const navigate = useNavigate();
+  const { user } = UseAuth();
 
   return (
     <div className="nit h-svh bg-secondary-90 flex flex-col justify-between">
-      <Navbar />
+      {user ? <ANavbar /> : <Navbar />}
+
       <div className="notFound w-full flex justify-center items-center h-full">
         <div className="inner flex flex-col md:flex-row-reverse items-center">
           {/* <div className="img-box w-80">

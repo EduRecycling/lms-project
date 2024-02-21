@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { Bend, Heading } from "./style";
 
 const Banner = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="Banner h-full w-full min-h-[200px] text-white bg-[#082100] flex justify-center px-10 overflow-hidden pt-20 md:pt-10">
       <Bend className="inner reverse flex gap-8 items-center justify-center w-[1280px] pt-10">
@@ -12,7 +15,12 @@ const Banner = () => {
             Effective waste management is one of the ways we can maintain a
             sustainable environment
           </p>
-          <button className="get-started bg-primary-90 hover:bg-primary-80 text-[#082100] p-[2em] py-3 font-semibold w-fit rounded-[4px]">
+          <button
+            className="get-started bg-primary-90 hover:bg-primary-80 text-[#082100] p-[2em] py-3 font-semibold w-fit rounded-[4px]"
+            onClick={() => {
+              navigate("outline");
+            }}
+          >
             Get Started Now!
           </button>
         </div>

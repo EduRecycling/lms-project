@@ -2,14 +2,44 @@ import { ReactElement } from "react";
 import { CgProfile } from "react-icons/cg";
 import { FaCertificate, FaClock, FaLanguage } from "react-icons/fa6";
 import { Heading } from "../../landing/style";
+import { CourseType } from "../../../../type";
+import { useNavigate } from "react-router-dom";
 
-const Welcome = () => {
+const Welcome = ({ course }: { course: CourseType }) => {
+  const stats = [
+    {
+      id: "1",
+      icon: <FaClock />,
+      value: "duration",
+      key: course.duration,
+    },
+    {
+      id: "2",
+      icon: <CgProfile />,
+      value: course.type,
+      key: course.price,
+    },
+    {
+      id: "3",
+      icon: <FaCertificate />,
+      value: "certificate",
+      key: course.certificate ? "Yes" : "No",
+    },
+    {
+      id: "4",
+      icon: <FaLanguage />,
+      value: "language",
+      key: course.language.join(","),
+    },
+  ];
+
+  const navigate = useNavigate();
   return (
     <div className="index flex flex-col gap-5 pt-20">
       <div className="top bg-Primary_90 text-secondary-10 p-14 flex justify-center items-center">
         <div className="inner text-center">
-          <Heading.h2 className="font-semibold">
-            Edurecycling For Kids Tutors
+          <Heading.h2 className="font-semibold capitalize">
+            {course.title}
           </Heading.h2>
           <p>Your partner in learning about how to recycle any kind of items</p>
         </div>
@@ -19,18 +49,27 @@ const Welcome = () => {
           <div className="info basis-[50%] max-w-[540px]">
             <Heading.h3 className="font-semibold">About the Course</Heading.h3>
             <div className="sumary mt-2 flex gap-3 flex-col">
-              {about.description.map((desc: string) => {
-                return <p className="text">{desc}</p>;
+              {course.about.map((desc: string, index) => {
+                return (
+                  <p className="py-2" key={index}>
+                    {desc}
+                  </p>
+                );
               })}
             </div>
           </div>
           <div className="others basis-[50%] bg-Primary_90 text-secondary-10 max-w-[320px] overflow-hidden rounded-xl">
             <div className="stats p-5 px-6 flex gap-3 flex-col">
-              {data.map((stat) => {
-                return <Stat stat={stat} />;
+              {stats.map((stat, index) => {
+                return <Stat stat={stat} key={index} />;
               })}
             </div>
-            <button className="bg-Primary_10 text-secondary-100 w-full p-4 font-semibold">
+            <button
+              className="bg-Primary_10 text-secondary-100 w-full p-4 font-semibold"
+              onClick={() => {
+                navigate("outline");
+              }}
+            >
               Enroll for free
             </button>
           </div>
@@ -41,22 +80,22 @@ const Welcome = () => {
         <div className="info my-3">
           <p>In this course you will learn</p>
           <ul className="list list-disc ml-5 py-2">
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
-            <li>Lorem ipsum dolor sit amet</li>
+            {course.objectives.map((r, index) => {
+              return <li key={index}>{r}</li>;
+            })}
           </ul>
-          <p className="py-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-            modi asperiores cupiditate impedit, consequuntur earum deserunt
-            cumque autem quisquam sapiente quaerat molestiae. Nihil provident
-            assumenda ea vero porro, recusandae illo animi accusamus odit minus
-            culpa reprehenderit dicta, deserunt laudantium in sunt quidem
-            voluptate ab dolore ut delectus enim, quo maxime!
-          </p>
+          {course.about.map((desc: string, index) => {
+            return (
+              <p className="py-2" key={index}>
+                {desc}
+              </p>
+            );
+          })}
         </div>
-        <button className="bg-Primary_10 text-secondary-100 p-2 px-12 rounded-sm font-semibold">
+        <button
+          className="bg-Primary_10 text-secondary-100 p-2 px-12 rounded-sm font-semibold"
+          onClick={() => navigate("outline")}
+        >
           Enroll for free
         </button>
       </div>
@@ -65,47 +104,6 @@ const Welcome = () => {
 };
 
 export default Welcome;
-
-const about = {
-  description: [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              dolore atque odit, temporibus deleniti blanditiis asperiores ullam
-              similique magni velit?`,
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              dolore atque odit, temporibus deleniti blanditiis asperiores ullam
-              similique magni velit?`,
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              dolore atque odit, temporibus deleniti blanditiis asperiores ullam
-              similique magni velit?`,
-  ],
-};
-
-const data = [
-  {
-    id: "1",
-    icon: <FaClock />,
-    value: "duration",
-    key: "2 Week",
-  },
-  {
-    id: "2",
-    icon: <CgProfile />,
-    value: "kids tutors edurecycling courses",
-    key: "Free",
-  },
-  {
-    id: "3",
-    icon: <FaCertificate />,
-    value: "certificate",
-    key: "Yes",
-  },
-  {
-    id: "4",
-    icon: <FaLanguage />,
-    value: "language",
-    key: "english",
-  },
-];
 
 const Stat = ({
   stat,

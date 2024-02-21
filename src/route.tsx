@@ -64,31 +64,31 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            path: "/student/dashboard",
+            path: "/dashboard",
             element: <StudentHome />,
           },
           {
-            path: "/student/dashboard",
+            path: "/dashboard",
             element: <StudentHome />,
           },
           {
-            path: "/student/explore",
+            path: "/explore",
             element: <Explore />,
           },
           {
-            path: "/student/notes",
+            path: "/notes",
             element: <StudentNote />,
           },
           {
-            path: "/student/profile",
+            path: "/profile",
             element: <div>student profile</div>,
           },
           {
-            path: "/student/feedback",
+            path: "/feedback",
             element: <div>feedbacks</div>,
           },
           {
-            path: "/student/certificates",
+            path: "/certificates",
             element: <div>certificates</div>,
           },
         ],
@@ -145,17 +145,17 @@ function PrivateRoute({ children }: { children: ReactElement }) {
 //     {
 //       id: "1",
 //       element: <div>ff</div>,
-//       url: "/student/profile",
+//       url: "/profile",
 //     },
 //     {
 //       id: "2",
 //       element: <div>fe</div>,
-//       url: "/student/feedback",
+//       url: "/feedback",
 //     },
 //     {
 //       id: "3",
 //       element: <div>fr</div>,
-//       url: "/student/certificate",
+//       url: "/certificate",
 //     },
 //   ];
 
@@ -177,14 +177,14 @@ function PrivateRoute({ children }: { children: ReactElement }) {
 //         }
 //       />
 
-//       <Route path="/student/dashboard" element={<StudentHome />} />
-//       <Route path="/student/explore" element={<Explore />} />
-//       <Route path="/student/notes" element={<StudentNote />} />
+//       <Route path="/dashboard" element={<StudentHome />} />
+//       <Route path="/explore" element={<Explore />} />
+//       <Route path="/notes" element={<StudentNote />} />
 
-//       <Route path="/student/course/1" element={<CourseHome />} />
-//       <Route path="/student/course/1/outline" element={<CourseOutline />} />
-//       <Route path="/student/course/1/cordinator" element={<Cordinator />} />
-//       <Route path="/student/course/1/certificate" element={<Certificate />} />
+//       <Route path="/course/1" element={<CourseHome />} />
+//       <Route path="/course/1/outline" element={<CourseOutline />} />
+//       <Route path="/course/1/cordinator" element={<Cordinator />} />
+//       <Route path="/course/1/certificate" element={<Certificate />} />
 
 //       {SubPages.map((spage) => {
 //         return (

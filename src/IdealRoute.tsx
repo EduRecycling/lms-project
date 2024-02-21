@@ -29,14 +29,14 @@ const course = [
     children: [
       {
         index: true,
-        element: <CourseHome />,
+        element: <RoleSwitch Admin={NotFound} Student={CourseHome} />,
       },
       {
         path: "/course/:id/outline",
         element: <CourseOutline />,
       },
       {
-        path: "/course/:id/cordinator",
+        path: "/course/:id/lesson/:sn",
         element: <Cordinator />,
       },
       {
@@ -134,7 +134,7 @@ function RoleSwitch({
 
   if (!user) {
     <Navigate to="/login" />;
-    return <p>loading...</p>;
+    return <Preloader />;
   }
 
   if (user && user.role === "ADMIN") {
@@ -146,7 +146,22 @@ function RoleSwitch({
 
 function PrivateRoute({ children }: { children: ReactElement }) {
   const { user } = UseAuth();
-  return user ? children : <Navigate to="/login" />;
+
+  if (!user) {
+    <Navigate to="/login" />;
+    return <Preloader />;
+  }
+  return children;
+}
+
+function Preloader() {
+  return (
+    <div className="preloader min-h-svh h-vh w-full text-center place-content-center place-items-center p-4">
+      <div className="inner">
+        <h4 className="text-2xl">Loading...</h4>
+      </div>
+    </div>
+  );
 }
 
 export default router;

@@ -1,12 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FaBars, FaX } from "react-icons/fa6";
 import { Iconic } from "../landing/style";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Nav } from "./style";
+import { UseAuth } from "../../firebase/authFuntions";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = UseAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await logOut()
+      .then(() => {
+        console.log("User logged out successfully");
+        navigate("/login"); // Redirect to the login page after logout
+      })
+      .catch((error: any) => console.error(error));
+  };
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
@@ -33,11 +46,23 @@ const Navbar = () => {
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
             <NavLink to="/Help">Need Help?</NavLink>
           </li>
+          {user ? (
+            <button
+              className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]"
+              onClick={handleSignOut}
+            >
+              Logout
+            </button>
+          ) : (
+            <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
+              <NavLink to="/Login">Login</NavLink>
+            </li>
+          )}
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <NavLink to="/Login">Login</NavLink>
-          </li>
-          <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <button className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30">
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
+            >
               Get Started
             </button>
           </li>

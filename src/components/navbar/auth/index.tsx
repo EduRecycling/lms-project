@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Iconic } from "../../landing/style";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -24,7 +25,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext) as ThemeContextType;
-  const { logOut } = UseAuth();
+  const { logOut, user } = UseAuth();
 
   useEffect(() => {
     if (!isOpen) void enableBodyScroll(document.body);
@@ -32,6 +33,17 @@ const Navbar = () => {
 
     // return disableBodyScroll(document.body);
   });
+
+  console.log(user.email);
+
+  const handleSignOut = async () => {
+    await logOut()
+      .then(() => {
+        console.log("User logged out successfully");
+        navigate("/login"); // Redirect to the login page after logout
+      })
+      .catch((error: any) => console.error(error));
+  };
 
   return (
     <>
@@ -55,17 +67,17 @@ const Navbar = () => {
         <div className={`nav-links ${isOpen && "show-links"} flex gap-10`}>
           <ul className={`main flex gap-[0.65rem] items-center`}>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/student/dashboard" className="nav-link">
+              <NavLink to="/dashboard" className="nav-link">
                 Dashboard
               </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/student/explore" className="nav-link">
+              <NavLink to="/dashboard/explore" className="nav-link">
                 Explore Courses
               </NavLink>
             </li>
             <li className="font-semibold text-lg hover:font-bold px-3 py-1">
-              <NavLink to="/student/notes" className="nav-link">
+              <NavLink to="/dashboard/notes" className="nav-link">
                 Notes
               </NavLink>
             </li>
@@ -90,7 +102,7 @@ const Navbar = () => {
                   <span className="dit flex items-center gap-[0.75rem]">
                     <div className="icon w-[2.575rem] h-[2.575rem] rounded-[50%] overflow-hidden">
                       <img
-                        src="/images/profile.png"
+                        src={user.photoURL}
                         className="w-full h-full object-cover"
                         alt="..."
                       />
@@ -102,8 +114,10 @@ const Navbar = () => {
                           lineHeight: "1.25rem",
                         }}
                       >
-                        <h4 className="name font-semibold">Justin Bergson</h4>
-                        <p>Justin@gmail.com</p>
+                        <h4 className="name font-semibold">
+                          {user.displayName}
+                        </h4>
+                        <p>{user.email}</p>
                       </div>
                       <div className="ic">
                         <div className="down-btn w-[1.45rem] h-[1.45rem] grid place-content- place-items-center rounded-full">
@@ -126,7 +140,7 @@ const Navbar = () => {
                   <ul className="limo relative flex flex-col w-full gap-[0.35rem] p-2">
                     <li>
                       <NavLink
-                        to="/student/profile"
+                        to="/dashboard/profile"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
                         <span className="icon">
@@ -136,19 +150,21 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        to="/student/feedback"
+                      <a
+                        href="https://bit.ly/edurecycling"
+                        target="_blank"
+                        rel="noreferrer"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
                         <span className="icon">
                           <FaComment />
                         </span>
                         <span>Give Feedback</span>
-                      </NavLink>
+                      </a>
                     </li>
                     <li>
                       <NavLink
-                        to="/student/certificate"
+                        to="/dashboard/certificate"
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
                       >
                         <span className="icon">
@@ -160,10 +176,7 @@ const Navbar = () => {
                     <li>
                       <button
                         className="flex items-center gap-[0.5rem] text-lg capitalize"
-                        onClick={() => {
-                          logOut();
-                          navigate("/login");
-                        }}
+                        onClick={handleSignOut}
                       >
                         <span className="icon">
                           <AiOutlineLogout />

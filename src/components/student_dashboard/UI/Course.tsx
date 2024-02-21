@@ -1,18 +1,12 @@
 import { Link } from "react-router-dom";
 import SubString from "../../../functions/SubString";
 import { Heading } from "../../landing/style";
-
-interface CourseType {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-}
+import { CourseType } from "../../../../type";
 
 const Course = ({ course }: { course: CourseType }) => {
   return (
     <Link
-      to={`/student/course/1`}
+      to={`/course/${course.id}`}
       className="w-fit h-fit min-w-fit min-h-fit max-w-fit max-h-fit flex-shrink"
     >
       <div className="offer-modal min-w-[300px] max-w-[320px] m-auto bg-[#fff] rounded-lg p-4 flex flex-col gap-2 shadow-lg animate__animated animate__fadeInUp wow self-stretch">

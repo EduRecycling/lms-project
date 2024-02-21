@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import { FaSquareFacebook } from "react-icons/fa6";
 import { UseAuth } from "../../firebase/authFuntions";
 import { useNavigate } from "react-router-dom";
 
 export default function ExternalAuth() {
   const { googleSignIn } = UseAuth();
-
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async (e: any) => {
@@ -19,11 +19,15 @@ export default function ExternalAuth() {
 
   return (
     <div>
+      <div className="row flex gap-1 text-2xl">
+        <input type="checkbox" name="rol" id="rol" />
+        <label htmlFor="role">Admin</label>
+      </div>
       <button
-        className="flex items-center justify-center  border-none w-full rounded-full p-4 mt-8 text-white font-[roboto] text-base shadow-custom bg-Primary_10 hover:bg-primary-20 "
+        className="flex items-center justify-center  border-none w-full rounded-full p-4 mt-2 text-white font-[roboto] text-base shadow-custom bg-Primary_10 hover:bg-primary-20 "
         onClick={handleGoogleSignIn}
       >
-        <p className="">Sign In with Google</p>{" "}
+        <p className="">Google</p>{" "}
         <img
           src="/images/auth/google.png"
           alt="google"
