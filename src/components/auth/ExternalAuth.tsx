@@ -5,20 +5,34 @@ import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
 import { UseAuth } from "../../firebase/authFuntions";
 import { useNavigate } from "react-router-dom";
 
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 export default function ExternalAuth() {
-  const { googleSignIn } = UseAuth();
+  const { googleSignIn, setIsAuth } = UseAuth();
   const { routePage } = useContext(ThemeContext) as ThemeContextType;
   const navigate = useNavigate();
 
-  const handleGoogleSignIn = async (e: any) => {
+   const handleGoogleSignIn = async (e: any) => {
     e.preventDefault();
     try {
-      await googleSignIn();
+      const result = await googleSignIn();
+      cookies.set("auth-token", result.user.refreshToken);
+      setIsAuth(true);
       navigate(routePage ? routePage : "/dashboard");
-    } catch (error: any) {
-      console.log(error.message);
+    } catch (err) {
+      console.error(err);
     }
-  };
+
+  // const handleGoogleSignIn = async (e: any) => {
+  //   e.preventDefault();
+  //   try {
+  //     await googleSignIn();
+  //     navigate(routePage ? routePage : "/dashboard");
+  //   } catch (error: any) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <div>

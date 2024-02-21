@@ -9,6 +9,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./config";
+import Cookies from "universal-cookie";
 
 type PropsType = {
   children: any;
@@ -23,15 +24,20 @@ export type AuthContextType = {
   googleSignIn: () => any;
   setUser: (value: any) => void;
   setLoading: (bool: boolean) => void;
+  isAuth: boolean;
+  setIsAuth: (bool: boolean) => void;
 };
 
 export const UserAuthContext = React.createContext<AuthContextType | null>(
   null
 );
 
+const cookies = new Cookies();
+
 export default function UserAAuthContextProvider({ children }: PropsType) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser: any) => {
@@ -69,6 +75,8 @@ export default function UserAAuthContextProvider({ children }: PropsType) {
       value={{
         user,
         setUser,
+        isAuth,
+        setIsAuth,
         loading,
         setLoading,
         logIn,
