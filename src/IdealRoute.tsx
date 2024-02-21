@@ -78,7 +78,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/scanner",
-        element: <ObjectDetection />,
+        element: (
+          <PrivateRoute>
+            <ObjectDetection />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -156,14 +160,14 @@ function PrivateRoute({ children }: { children: ReactElement }) {
   return children;
 }
 
-function Preloader() {
-  return (
-    <div className="preloader min-h-svh h-vh w-full text-center place-content-center place-items-center p-4">
-      <div className="inner">
-        <h4 className="text-2xl">Loading...</h4>
-      </div>
-    </div>
-  );
-}
+// function Preloader() {
+//   return (
+//     <div className="preloader min-h-svh h-vh w-full text-center place-content-center place-items-center p-4">
+//       <div className="inner">
+//         <h4 className="text-2xl">Loading...</h4>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default router;
