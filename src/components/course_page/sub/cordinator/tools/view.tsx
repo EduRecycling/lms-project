@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const View = ({ ele, id }: { ele: string; id: string | number }) => {
+const View = ({ ele }: { ele: string; id: string | number }) => {
   const Element = parse(ele);
   return (
     <div className="d m-auto flex flex-col gap-2">
