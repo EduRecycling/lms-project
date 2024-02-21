@@ -105,5 +105,6 @@ export type ModuleType = {
   id: string | number;
   sn: string | number;
   locked?: boolean;
-  objectives: ObjectiveType;
+  objectives: ObjectiveType[];
+lessons: LessonType[];
 };
