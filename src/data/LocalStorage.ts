@@ -6,9 +6,11 @@
 function getSettings(itemName: string) {
   if (!itemName) {
     console.error("No storage name!");
+    return;
   }
 
-  return JSON.parse(localStorage.getItem(itemName) || "local");
+  if (typeof itemName === "string")
+    return JSON.parse(localStorage.getItem(itemName) || "false");
 }
 
 function createSettings(itemName: string, storageScheme: any) {

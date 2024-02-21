@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { FaSquareFacebook } from "react-icons/fa6";
+import { useContext } from "react";
+import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
 import { UseAuth } from "../../firebase/authFuntions";
 import { useNavigate } from "react-router-dom";
 
 export default function ExternalAuth() {
   const { googleSignIn } = UseAuth();
+  const { routePage } = useContext(ThemeContext) as ThemeContextType;
   const navigate = useNavigate();
 
   const handleGoogleSignIn = async (e: any) => {
     e.preventDefault();
     try {
       await googleSignIn();
-      navigate("/dashboard");
+      navigate(routePage ? routePage : "/dashboard");
     } catch (error: any) {
       console.log(error.message);
     }

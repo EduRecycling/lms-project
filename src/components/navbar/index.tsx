@@ -2,15 +2,17 @@
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { FaBars, FaX } from "react-icons/fa6";
 import { Iconic } from "../landing/style";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Nav } from "./style";
 import { UseAuth } from "../../firebase/authFuntions";
+import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = UseAuth();
   const navigate = useNavigate();
+  const { setRoutePage } = useContext(ThemeContext) as ThemeContextType;
 
   const handleSignOut = async () => {
     await logOut()
@@ -30,7 +32,12 @@ const Navbar = () => {
 
   return (
     <Nav className="Navbar shadow-md fixed w-full bg-primary-100 flex justify-between p-1 px-10 items-center">
-      <NavLink to="/">
+      <NavLink
+        onClick={() => {
+          setRoutePage("/");
+        }}
+        to="/"
+      >
         <Iconic className="logo i72">
           <img src="/images/logo1.png" alt="..." />
         </Iconic>
@@ -39,19 +46,46 @@ const Navbar = () => {
         <ul className={`flex gap-[28px] items-center`}>
           {user && (
             <li className="font-semibold text-lg hover:font-bold px-3 py-1 hover:text-[##EDEFE8]">
-              <NavLink to="/dashboard" className="nav-link">
+              <NavLink
+                onClick={() => {
+                  setRoutePage("/dashboard");
+                }}
+                to="/dashboard"
+                className="nav-link"
+              >
                 Dashboard
               </NavLink>
             </li>
           )}
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <NavLink to="/About">About Us</NavLink>
+            <NavLink
+              onClick={() => {
+                setRoutePage("/about");
+              }}
+              to="/About"
+            >
+              About Us
+            </NavLink>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <NavLink to="/Courses">Courses</NavLink>
+            <NavLink
+              onClick={() => {
+                setRoutePage("/courses");
+              }}
+              to="/Courses"
+            >
+              Courses
+            </NavLink>
           </li>
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <NavLink to="/Help">Need Help?</NavLink>
+            <NavLink
+              onClick={() => {
+                setRoutePage("/help");
+              }}
+              to="/Help"
+            >
+              Need Help?
+            </NavLink>
           </li>
           {user ? (
             <button
