@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { LessonType, Module } from "../../../../../type";
+import { LessonType, ModuleType } from "../../../../../type";
 import BottomTab from "./BottomTab";
 import TopTab from "./TopTab";
 import { AudioPlayer, Objective, Quiz, VideoPlayer, View } from "./tools";
 
-const Cordinator = ({ module }: { module: Module }) => {
+const Cordinator = ({ module }: { module: ModuleType }) => {
   const Vies = (obj: LessonType) => {
     switch (obj.type) {
       case "article":
