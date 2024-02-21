@@ -1,22 +1,20 @@
 import { IoMdArrowBack } from "react-icons/io";
-import { Navigate } from "react-router-dom";
+
 import ExternalAuth from "./ExternalAuth";
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router";
 import { Footer } from "../landing";
 import { UseAuth } from "../../firebase/authFuntions";
 import { Heading } from "../landing/style";
-import { ThemeContext, ThemeContextType } from "../../context/ThemeContext";
+import NotFound from "../../pages/notFound";
 
 export default function Auth() {
   const myFormRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { user } = UseAuth();
 
-  const { routePage } = useContext(ThemeContext) as ThemeContextType;
-
   if (user) {
-    return <Navigate to={routePage ? routePage : "/dashboard"} />;
+    return <NotFound />;
   }
 
   return (
