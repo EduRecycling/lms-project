@@ -34,7 +34,7 @@ const Navbar = () => {
     // return disableBodyScroll(document.body);
   });
 
-  console.log(user.email);
+  console.log(user);
 
   const handleSignOut = async () => {
     await logOut()
@@ -104,7 +104,7 @@ const Navbar = () => {
                       <img
                         src={user.photoURL}
                         className="w-full h-full object-cover"
-                        alt="..."
+                        alt={user.photoURL}
                       />
                     </div>
                     <div className="p flex gap-[0.8rem] items-center">
@@ -202,9 +202,9 @@ const Navbar = () => {
                 }}
               >
                 <img
-                  src="/images/profile.png"
+                  src={user.photoURL}
                   className="w-full h-full object-cover"
-                  alt="..."
+                  alt={user.photoURL}
                 />
               </div>
             </button>

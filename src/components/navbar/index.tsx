@@ -37,6 +37,13 @@ const Navbar = () => {
       </NavLink>
       <div className={`nav-links ${isOpen && "show-links"}`}>
         <ul className={`flex gap-[28px] items-center`}>
+          {user && (
+            <li className="font-semibold text-lg hover:font-bold px-3 py-1 hover:text-[##EDEFE8]">
+              <NavLink to="/dashboard" className="nav-link">
+                Dashboard
+              </NavLink>
+            </li>
+          )}
           <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
             <NavLink to="/About">About Us</NavLink>
           </li>
@@ -48,7 +55,7 @@ const Navbar = () => {
           </li>
           {user ? (
             <button
-              className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]"
+              className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
               onClick={handleSignOut}
             >
               Logout
@@ -58,14 +65,16 @@ const Navbar = () => {
               <NavLink to="/Login">Login</NavLink>
             </li>
           )}
-          <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
-            <button
-              onClick={() => navigate("/dashboard")}
-              className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
-            >
-              Get Started
-            </button>
-          </li>
+          {!user && (
+            <li className="font-semibold text-lg hover:font-bold hover:text-[##EDEFE8]">
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="get-started bg-primary-60 text-white p-2 px-3 rounded hover:transition hover:bg-primary-30"
+              >
+                Get Started
+              </button>
+            </li>
+          )}
         </ul>
       </div>
       <button

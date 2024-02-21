@@ -62,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/courses",
-        element: <Explore />,
+        element: (
+          <PrivateRoute>
+            <Explore />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/help",
@@ -133,8 +137,7 @@ function RoleSwitch({
   const { user } = UseAuth();
 
   if (!user) {
-    <Navigate to="/login" />;
-    return <Preloader />;
+    return <Navigate to="/login" />;
   }
 
   if (user && user.role === "ADMIN") {
@@ -148,8 +151,7 @@ function PrivateRoute({ children }: { children: ReactElement }) {
   const { user } = UseAuth();
 
   if (!user) {
-    <Navigate to="/login" />;
-    return <Preloader />;
+    return <Navigate to="/login" />;
   }
   return children;
 }
